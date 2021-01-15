@@ -1,0 +1,15 @@
+{% extends "catalog/product/base.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h1>Регистрация пользователя</h1>
+		<p>Для регистрации, заполните следующие поля формы:</p>
+		<form method="post">
+			{{ user_form.as_p }}
+			{% csrf_token %}
+			<p><input type="submit" value="Создать пользователя"></p>
+		</form>
+	</div>
+{% endblock %}

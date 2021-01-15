@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Реинвест-Сервис</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/favi.png" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+  <style media="screen">
+    html,
+    body,
+    header,
+    .carousel{
+      height: 100vh;
+    }
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .carousel{
+        height: 100vh;
+      }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body,
+      header,
+      .carousel{
+        height: 100vh;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+      <a href="#" class="navbar-brand waves-effect mr-5">
+        <img src="img/data/nav/logo.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button"
+        data-toggle="collapse"  data-target= "#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link waves-effect">О нас</a>
+          </li>
+          <!-- Dropdown -->
+           <li class="nav-item dropdown multi-level-dropdown">
+             <a href="#" id="menu" data-toggle="dropdown" class="nav-link dropdown-toggle w-100">Каталог</a>
+             <ul class="dropdown-menu mt-2 rounded-0 border-0 z-depth-1">
+               <li class="dropdown-item dropdown-danger dropdown-submenu p-0">
+                 <a href="#" data-toggle="dropdown" class="dropdown-toggle w-100">Термосублимационные<br>принтеры </a>
+                 <ul class="dropdown-menu ml-2 rounded-0 border-0 z-depth-1">
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">DNP</a>
+                   </li>
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">MITSUBISHI</a>
+                   </li>
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">SINFONIA</a>
+                   </li>
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">HITI</a>
+                   </li>
+                 </ul>
+               </li>
+               <li class="dropdown-item dropdown-submenu p-0">
+                 <a href="#" data-toggle="dropdown" class="dropdown-toggle  w-100">Расходные материалы</a>
+                 <ul class="dropdown-menu mr-2 rounded-0  dropdown-danger border-0 z-depth-1 r-100 ">
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">Для<br>термосублимационных<br>принтеров DNP</a>
+                   </li>
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">Для<br>термосублимационных <br>принтеров MITSUBISHI<br>ELECNRIC</a>
+                   </li>
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">Для<br>термосублимационных <br>принтеров SINFONIA</a>
+                   </li>
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">Для<br>термосублимационных <br>принтеров HITI</a>
+                   </li>
+                 </ul>
+               </li>
+               <li class="dropdown-item dropdown-submenu p-0">
+                 <a href="#" data-toggle="dropdown" class="dropdown-toggle w-100">Терминалы и<br>фотокиоски</a>
+                 <ul class="dropdown-menu ml-2 rounded-0 dropdown-danger border-0 z-depth-1">
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">DNP</a>
+                   </li>
+                   <li class="dropdown-item p-0">
+                     <a href="#" class="w-100">MITSUBISHI</a>
+                   </li>
+                  </ul>
+               </li>
+               <li class="dropdown-item p-0">
+                 <a href="#" class="w-100">Дополнительные<br>принадлежности</a>
+               </li>
+               <li class="dropdown-item p-0">
+                 <a href="#" class="w-100">Оборудование для<br>создания и сборки<br>альбомов / обложки<br>CLIXXPIXX</a>
+               </li>
+               <li class="dropdown-item p-0">
+                 <a href="#" class="w-100">Экспресс фотоальбомы<br>MITSUBISHI / MAP</a>
+               </li>
+               <li class="dropdown-item p-0">
+                 <a href="#" class="w-100">Экспресс сувениры</a>
+               </li>
+             </ul>
+           </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">Акции</a>
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">Сервис</a>
+          </li>
+          <li class="nav-item ">
+            <a href="#" class="nav-link">Прайс</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-shopping-cart"></i>
+              <span class="badge-pill red z-depth-1 mr-1">10</span>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-6" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true">
+              <i class="fas fa-user"></i> Профиль </a>
+            <div class="dropdown-menu dropdown-danger" aria-labelledby="navbarDropdownMenuLink-6">
+              <a class="dropdown-item" href="#">Регистрация</a>
+              <a class="dropdown-item" href="#">Вход</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<!-- end navbar -->
+
+<main>
+  <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+    <span class="navbar-brand">Categories:</span>
+    <button class="navbar-toggler" type="button"
+      data-toggle="collapse"  data-target= "#nextNav"
+      aria-controls="nextNav" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+    <div class="collapse navbar-collapse" id="nextNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link">All</a>
+        </li>
+        <li class="nav-item active">
+          <a href="#" class="nav-link">Shirts</a>
+        </li><li class="nav-item">
+          <a href="#" class="nav-link">Sport wears</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Outwears</a>
+        </li>
+      </ul>
+
+      <form class="form-inline">
+        <div class="md-form my-0">
+          <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <section class="text-center mb-4">
+    <div class="row animation fadeIn">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="badge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="badge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="badge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="badge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row wow fadeIn">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="badge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="badge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="badge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+
+          <div class="view overlay">
+            <img class="card-img-top" src="https://contents.mediadecathlon.com/p1599115/k$a0876126265da26c242df04526daff27/kiprun-care-men-s-running-t-shirt-blue-green.jpg?&f=250x250" alt="NASA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+          <div class="card-body text-center">
+            <a href="" class="grey-text">
+              <h5>T-shirt</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="#" class="dark-grey-text">Nasa t-shirt <span class="baddefault-colorge badge-pill danger-color">NEW</span></a>
+              </strong>
+            </h5>
+            <h4 class="font-weight-bold blue-text">
+              <strong>199$</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <nav class="d-flex justify-content-center wow fadeIn">
+      <ul class="pagination pg-blue">
+        <li class="page-item disabled">
+          <a href="" class="page-link" aria-label="Previous">
+            <spa aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item active">
+          <a href="" class="page-link" aria-label="Previous">
+            <spa aria-hidden="true">1</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a href="" class="page-link" aria-label="Previous">
+            <spa aria-hidden="true">2</span>
+          </a>
+        </li>
+        <li class="page-item ">
+          <a href="" class="page-link" aria-label="Previous">
+            <spa aria-hidden="true">3</span>
+          </a>
+        </li>
+        <li class="page-item ">
+          <a href="" class="page-link" aria-label="Previous">
+            <spa aria-hidden="true">4</span>
+          </a>
+        </li>
+        <li class="page-item ">
+          <a href="" class="page-link" aria-label="Previous">
+            <spa aria-hidden="true">5</span>
+          </a>
+        </li>
+        <li class="page-item ">
+          <a href="" class="page-link" aria-label="Next">
+            <spa aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</main>
+<footer class="page-footer text-center font-small mt-4 animation fadeIn">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-lg3 col-md-3 my-4">
+        <p class="text-left"><strong>О нас</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left">Тел./Факс:  +7(495)663-32-26</p>
+        <p class="text-left">Моб:  +7(916)260-02-66</p>
+        <p class="text-left">Email: reinvest-service@mail.ru</p>
+        </div>
+
+      <div class="col-lg3 col-md-3 my-4">
+
+        <p class="text-left"><strong>Наши услуги</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left">Тел./Факс:  +7(495)663-32-26</p>
+        <p class="text-left">Моб:  +7(916)260-02-66</p>
+        <p class="text-left">Email: reinvest-service@mail.ru</p>
+
+      </div>
+      <div class="col-lg3 col-md-3 my-4">
+
+        <p class="text-left"><strong>Аккаунт</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left">Тел./Факс:  +7(495)663-32-26</p>
+        <p class="text-left">Моб:  +7(916)260-02-66</p>
+        <p class="text-left">Email: reinvest-service@mail.ru</p>
+
+      </div>
+      <div class="col-lg3 col-md-3 my-4">
+
+        <p class="text-left"><strong>Статьи</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left">Тел./Факс:  +7(495)663-32-26</p>
+        <p class="text-left">Моб:  +7(916)260-02-66</p>
+        <p class="text-left">Email: reinvest-service@mail.ru</p>
+
+      </div>
+    </div>
+
+
+  </div>
+  <!--<div class="pt-4">
+    <a href="#" role="button" class="btn btn-outline-white">WDB <i class="fa fa-graduation-cap ml-2"></i></a>
+    <a href="#" role="button" class="btn btn-outline-white">Online shop <i class="fa fa-graduation-cap ml-2"></i></a>
+  </div>-->
+  <div class="container">
+    <hr class=" white ">
+  </div>
+  <!--
+  <div class="pb-4">
+    <a href="#">
+      <i class="fab fa-fasebook mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-twitter mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-youtube mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-google-plus mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-dribbble mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-pinterest mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-instagram mr-3"></i>
+    </a>
+  </div>-->
+  <div class="footer-copyright py-3">
+    © Реинвест-Сервис 2020
+  </div>
+</footer>
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+
+
+
+</body>
+</html>

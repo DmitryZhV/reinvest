@@ -1,0 +1,103 @@
+{% load static %}
+{% load contact_tags %}
+<footer class="page-footer  font-small mt-4 animation fadeIn ">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-12 col-sm-6 col-lg-3 col-md-6 my-4">
+          <a href="/" class=" mr-3 ">
+            <img class=" mb-2 w-50 " src="{% static 'img/data/nav/logo.png' %}" alt="">
+          </a>
+          <hr class=" white my-2">
+          <p class="text-left"> г. Москва, Щелковское шоссе, 100к1,<br>подъезд 3, 4 этаж.</p>
+          <p class="text-left"><i class="fas fa-phone"></i> +7(495)663-32-26</p>
+          <p class="text-left"><i class="fas fa-mobile-alt"></i> +7(916)260-02-66</p>
+          <p class="text-left"><a href="mailto:reinvest-service@mail.ru"><i class="fa fa-envelope"></i> reinvest-service@mail.ru</a></p>
+        </div>
+
+      <div class="col-12 col-sm-6 col-lg-3 col-md-6 my-4">
+        
+        <p class="text-left mb-4"><strong>Категории товаров</strong></p>
+        <hr class=" white my-2">
+        {% for category in categories %}
+        <p class="text-left"><a href="{{ category.url }}" >{{ category.name }}</a></p>
+        {% endfor %}
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3 col-md-6 my-4">
+
+        <p class="text-left  mb-4"><strong>Помощь</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Контакты</p>
+        <p class="text-left">FAQ</p>
+        <p class="text-left">Доставка</p>
+        <p class="text-left">Оплата</p>
+        <p class="text-left">Ремонт и обслуживание</p>
+        <p class="text-left">Прайс-лист</p>
+        
+
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3 col-md-6 my-4">
+        {% contact_form %}
+        <!--<p class="text-left"><strong>Будь в курсе новых акций</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Подпишись на нашу рассылку </p> -->
+        
+
+      </div>
+    </div>
+
+
+  </div>
+  <!--<div class="pt-4">
+    <a href="#" role="button" class="btn btn-outline-white">WDB <i class="fa fa-graduation-cap ml-2"></i></a>
+    <a href="#" role="button" class="btn btn-outline-white">Online shop <i class="fa fa-graduation-cap ml-2"></i></a>
+  </div> -->
+  <div class="container">
+    <hr class=" white ">
+  </div>
+  <div class="container">
+    <div class="row d-flex justify-content-between ">
+      <div class="d-flex align-items-center"->
+      <p class="text-center">© Реинвест-Сервис 2020</p>
+      </div>
+      <div class="d-flex align-items-left">
+          <a href="/" class=" mr-3 ">
+            <img class=" img-logo-rbk " src="{% static 'img/data/logo/rbk.png' %}" alt="">
+          </a>
+          <a href="/" class=" mr-3 ">
+            <img class=" img-logo-rbk " src="{% static 'img/data/logo/visa.png' %}" alt="">
+          </a>
+          <a href="/" class=" mr-3 ">
+            <img class=" img-logo-rbk " src="{% static 'img/data/logo/master.png' %}" alt="">
+          </a>
+          <a href="/" class=" mr-3 ">
+            <img class=" img-logo-rbk " src="{% static 'img/data/logo/mir.png' %}" alt="">
+          </a>
+    </div>
+  </div>
+<!--
+  <div class="pb-4">
+    <a href="#">
+      <i class="fab fa-fasebook mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-twitter mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-youtube mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-google-plus mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-dribbble mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-pinterest mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-instagram mr-3"></i>
+    </a>
+  </div>-->
+  
+</footer>

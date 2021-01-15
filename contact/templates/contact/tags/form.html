@@ -1,0 +1,15 @@
+<div class="single_footer_area mb-50">
+    <div class="footer_heading mb-4">
+        <p class="text-left ml-1 mb-4"><strong>Будь в курсе новых акций</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left ml-1">Подпишись на нашу рассылку</p>
+    </div>
+    <div class="subscribtion_form">
+        <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            {{ contact_form }}
+            <!-- <input type="email" name="mail" class="form-control mail m-1" placeholder="Введите ваш E-mail"> -->
+            <button type="submit" class=" btn-footer w-100 color-white"><b>Подписаться</b></button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+{% extends 'catalog/product/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Breadcumb Area -->
+    <div class="breadcumb_area">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <h5>Корзина</h5>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                        <li class="breadcrumb-item active">Корзина</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcumb Area -->
+
+    <!-- Cart Area -->
+    <div class="cart_area section_padding_100_70 clearfix">
+        <div class="container">
+		{% if not product_in_basket %}
+          
+            <form class="col-12 " action="" method="post" name=" ">{% csrf_token %}
+			 <div class="row justify-content-between">
+              <div class="col-12">
+                  <div class="cart-table">
+                      <div class="table-responsive">
+
+                          <table class="table table-bordered mb-30">
+                              <thead>
+                                  <tr>
+                                      <th scope="col"><i class="fas fa-trash-alt"></i></th>
+                                      <th scope="col">Изображение</th>
+                                      <th scope="col">Наименование</th>
+                                      <th scope="col">Цена</th>
+                                      <th scope="col">Количество</th>
+                                      <th scope="col">Итог</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                {% for product_in_basket in products_in_basket %}
+                                  <tr>
+                                      <th scope="row">
+                                          <i class="fas fa-times"></i>
+                                      </th>
+                                      <td>
+                                          {% for product_image in product_in_basket.product.productimage_set.all %}
+                                          <img src="{{ product_image.image.url }}" alt="Product">
+                                          {% endfor %}
+                                      </td>
+                                      <td>
+                                          <a href="#">{{ product_in_basket.product.name }}</a>
+                                      </td>
+                                      <td><span class="product-in-basket-price">
+                                            {{ product_in_basket.price_per_item }} ₽
+                                          </span>
+                                      </td>
+                                      <td>
+                                          <div class="def-number-input number-input safari_only">
+
+                                              <input type="number" class="quantity"  step="1" min="0" max="99"
+                                              value="{{ product_in_basket.num }}" name="product_{{product_in_basket.id}}">
+
+                                          </div>
+                                      </td>
+                                      <td>
+                                        <span class="product-total-amount-in-basket">
+                                        {{ product_in_basket.total_price }}
+                                        </span> ₽
+                                      </td>
+                                  </tr>
+                                {%endfor%}
+
+                              </tbody>
+                          </table>
+
+                      </div>
+                  </div>
+              </div>
+				
+              <div class="col-12 col-lg-6">
+                  <div class="cart-apply-coupon mb-30">
+                      <h6>У вас есть купон?</h6>
+                      <p>Введите код вашего купона и получите скидку!</p>
+                      <!-- Form -->
+                      <div class="coupon-form">
+                          <form action="#">
+                              <input type="text" class="form-control" placeholder="Введите код купона">
+                              <button type="submit" class="btn btn-danger">Применить купон</button>
+                          </form>
+                      </div>
+                      <div class="form-group">
+          							<div class="col-lg-10">
+
+          								<label for="">Имя</label>
+          								<span class="form-error">{{form.name.errors}}</span>
+          								<input type="text" name="{{form.name.html_name}}" class="form-control"
+          								value="{{request.POST.name}}"/>
+          							</div>
+          						</div>
+          						<div class="form-group">
+          							<div class="col-lg-10">
+          								<label for="">Телефон</label>
+          								<span class="form-error">{{form.phone.errors}}</span>
+          								<input type="text" name="{{form.phone.html_name}}" class="form-control"
+          								value="{{request.POST.phone}}"/>
+          							</div>
+          						</div>
+                  </div>
+              </div>
+
+              <div class="col-12 col-lg-5">
+                  <div class="cart-total-area mb-30">
+                      <h5 class="mb-3">Cart Totals</h5>
+                      <div class="table-responsive">
+                          <table class="table mb-3">
+                              <tbody>
+                                  <tr>
+                                      <td>Подитог</td>
+                                      <td><span id="total_order_amount">XXX</span> ₽</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Доставка</td>
+                                      <td>1000 ₽</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Налоги (20%)</td>
+                                      <td>1000 ₽</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Сумма заказа</td>
+                                      <td>1000 ₽</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <button type="submit" class="btn btn-danger d-block">Оформить заказ</button>
+                  </div>
+              </div>
+               </div>
+            </form>
+         
+		{% else %}
+			<h3 class="text-center">В вашей карзине нет товара</h3>
+		{% endif %}
+      </div>
+  </div>
+  <!-- Cart Area End -->
+
+{% endblock content %}

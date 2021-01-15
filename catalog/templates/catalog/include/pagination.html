@@ -1,0 +1,46 @@
+<ul class="pagination pagination-sm justify-content-center">
+    
+    {% if products.has_previous %}
+        {% if products.number|add:'-3' > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">1</a>
+            </li>
+        {% endif %}
+        {% if products.number|add:'-3' >= 3 %}
+            <li class="page-item active">
+                <a class="page-link" href="?page={{ products.previous_page_number|add:'-3' }}">
+                <span>...</span>
+                </a>
+            </li>
+        {% endif %}
+    {% endif %}
+    {% if paginator.page_range|length >= 1 %}
+        {% for i in paginator.page_range %}
+            {% if products.number == i %}
+                <li class="page-item active">
+                    <a class="page-link" href="#"> {{i}}</a>
+                </li>
+            {% elif i > products.number|add:'-4' and i < products.number|add:'4' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if products.has_next %}
+        {% if products.number|add:'4' < products.paginator.num_pages %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products.next_page_number|add:'3' }}">
+                <span>...</span>
+                </a>
+            </li>
+        {% endif %}
+        {% if products.number|add:'3' < products.paginator.num_pages %}
+            <li class="page-item ">
+                <a class="page-link" href="?page={{ products.paginator.num_pages }}">
+                {{ products.paginator.num_pages }}
+                </a>
+            </li>
+        {% endif %}
+    {% endif %}
+</ul>

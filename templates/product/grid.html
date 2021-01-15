@@ -1,0 +1,277 @@
+{% extends 'product/base.html' %}
+{% block content%}
+
+{% load static %}
+
+<main>
+  <!-- Quick View Modal Area -->
+  <div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="modal-body">
+                  <div class="quickview_body">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-12 col-lg-5">
+                                  <div class="quickview_pro_img">
+                                      <img class="first_img" src="img/product-img/new-1-back.png" alt="">
+                                      <img class="hover_img" src="img/product-img/new-1.png" alt="">
+                                      <!-- Product Badge -->
+                                      <div class="product_badge">
+                                          <span class="badge-new">New</span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-lg-7">
+                                  <div class="quickview_pro_des">
+                                      <h4 class="title">Boutique Silk Dress</h4>
+                                      <div class="top_seller_product_rating mb-15">
+                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                      </div>
+                                      <h5 class="price">$120.99 <span>$130</span></h5>
+                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
+                                      <a href="#">View Full Product Details</a>
+                                  </div>
+                                  <!-- Add to Cart Form -->
+                                  <form class="cart" method="post">
+                                      <div class="quantity">
+                                          <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
+                                      </div>
+                                      <button type="submit" name="addtocart" value="5" class="cart-submit">Add to cart</button>
+                                      <!-- Wishlist -->
+                                      <div class="modal_pro_wishlist">
+                                          <a href="wishlist.html"><i class="icofont-heart"></i></a>
+                                      </div>
+                                      <!-- Compare -->
+                                      <div class="modal_pro_compare">
+                                          <a href="compare.html"><i class="icofont-exchange"></i></a>
+                                      </div>
+                                  </form>
+                                  <!-- Share -->
+                                  <div class="share_wf mt-30">
+                                      <p>Share with friends</p>
+                                      <div class="_icon">
+                                          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                          <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                          <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Quick View Modal Area -->
+
+  <!-- Breadcumb Area -->
+  <div class="breadcumb_area">
+      <div class="container h-100">
+          <div class="row h-100 align-items-center">
+              <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+                  <h5>{{ category.name }}</h5>
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                      <li class="breadcrumb-item active">{{ category.name }}</li>
+                  </ol>
+              </div>
+              <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+              	<p>{{ category.description }}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Breadcumb Area -->
+
+  <section class="shop_grid_area section_padding_100">
+      <div class="container">
+          <div class="row">
+              <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+                  <div class="shop_sidebar_area">
+                    <form class="" action="json-filter" id = 'filter' method="get" name="filter">
+
+
+                      <!-- Single Widget -->
+                      <div class="widget catagory mb-30">
+                          <h6 class="widget-title">Бренды</h6>
+                          <div class="widget-desc">
+                              {% for brand in brands %}
+                              <!-- Single Checkbox -->
+
+                              <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
+                                  <input type="checkbox" class="custom-control-input" id="customCheck{{ brand.id }}" name="brand" value="{{ brand.id}}" checked>
+                                  <label class="custom-control-label" for="customCheck{{ brand.id }}">{{ brand.name }} <span class="text-muted">({{ brand.count }})</span></label>
+                              </div>
+                              {% endfor %}
+                          </div>
+                      </div>
+
+                      <!-- Single Widget -->
+                      <div class="widget price mb-30">
+                          <h6 class="widget-title">Фильтр по цене</h6>
+                          <div class="widget-desc">
+                              <div class="slider-range">
+                                  <div data-min="0" data-max="100000" data-unit="₽" id="customPrice"
+                                  class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="100000" data-label-result="Цена:">
+                                      <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                      <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                      <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                  </div>
+                                  <div class="range-price">Цена: 0 - 100000</div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="widget text-center" >
+                        <button class="btn btn-danger" id="button-filter"  type="submit"  >Применить</button>
+                      </div>
+                    </form>
+                                         
+
+                      <!-- Single Widget -->
+                      <div class="widget rating mb-30">
+                          <h6 class="widget-title">Average Rating</h6>
+                          <div class="widget-desc">
+                              <ul>
+                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <span class="text-muted">(103)</span></a></li>
+
+                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(78)</span></a></li>
+
+                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(47)</span></a></li>
+
+                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(9)</span></a></li>
+
+                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(3)</span></a></li>
+                              </ul>
+                          </div>
+                      </div>
+
+                      
+                  </div>
+              </div>
+                <!-- Раздел категорий -->
+              <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                  <!-- Shop Top Sidebar -->
+                  <div class="shop_top_sidebar_area d-flex flex-wrap align-items-center justify-content-between">
+                      <div class="view_area d-flex">
+                          <div class="grid_view">
+                              <a href="" id="button-grid" data-toggle="tooltip" data-placement="top" title="Таблица"><i class="fas fa-th"></i></a>
+                          </div>
+                          <div class="list_view ml-3">
+                              <a href="" id="button-list" data-toggle="tooltip" data-placement="top" title="Список"><i class="fas fa-th-list"></i></a>
+                          </div>
+                      </div>
+                      <select class="small right">
+                          <option selected>Short by Popularity</option>
+                          <option value="1">Short by Newest</option>
+                          <option value="2">Short by Sales</option>
+                          <option value="3">Short by Ratings</option>
+                      </select>
+                  </div>
+
+                  <div class="shop_grid_product_area">
+                      <div class="row justify-content-center row_grid_product_area">
+                        {% for product in products %}
+                          <!-- Single Product -->
+                        <div class="col-9 col-sm-12 col-md-6 col-lg-4">
+                          <div class="single-product-area mb-30">
+                              <div class="product_image">
+                                  <!-- Product Image -->
+                                <a href="{{product.get_absolute_url}}">  <!-- .get_absolute_url-->
+                                  {% for image_item in product.productimage_set.all %}
+                                  <img class="normal_img" src="{{ image_item.image.url }}" alt="">
+                                  <img class="hover_img" src="" alt="">
+                                  {%endfor%}
+                                </a>
+                                  <!-- Product Badge -->
+                                  <div class="product_badge">
+                                      <span>TOP</span>
+                                  </div>
+
+                                  <!-- Wishlist -->
+                                  <div class="product_wishlist">
+                                      <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+                                  </div>
+
+                                  <!-- Compare -->
+                                  <div class="product_compare">
+                                      <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+                                  </div>
+                              </div>
+
+                              <!-- Product Description -->
+                              <div class="product_description">
+                                  <!-- Add to cart -->
+                                  <div class="product_add_to_cart">
+                                      <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+                                  </div>
+
+                                  <!-- Quick View  product_quick_view -->
+                                  <div class="product_quick_view">
+                                      <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+                                  </div>
+
+                                  <!--<p class="brand_name">DNP</p>-->
+                                  <a href="{{product.get_absolute_url}}"><i class="fa fa-arrows-h" ></i>{{ product.name }}</a>
+                                  <div class="row d-flex justify-content-around align-items-center">
+                                  <h5 class="product-price"><b>{{ product.price }} ₽</b></h5>
+                                  <div class="product_rating">
+                                  	  <i class="fa fa-star" aria-hidden="true"></i>
+                                      <i class="fa fa-star" aria-hidden="true"></i>
+                                      <i class="fa fa-star" aria-hidden="true"></i>
+                                      <i class="fa fa-star" aria-hidden="true"></i>
+                                      <i class="fa fa-star" aria-hidden="true"></i>
+                                      <span>12</span>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+
+
+                      </div>
+                  </div>
+
+                  <!-- Shop Pagination Area -->
+                  <div class="shop_pagination_area mt-30">
+                      <nav aria-label="Page navigation">
+                          <ul class="pagination pagination-sm justify-content-center">
+                              <li class="page-item">
+                                  <a class="page-link" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                              </li>
+                              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">4</a></li>
+                              <li class="page-item"><a class="page-link" href="#">5</a></li>
+                              <li class="page-item"><a class="page-link" href="#">...</a></li>
+                              <li class="page-item"><a class="page-link" href="#">8</a></li>
+                              <li class="page-item"><a class="page-link" href="#">9</a></li>
+                              <li class="page-item">
+                                  <a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                              </li>
+                          </ul>
+                      </nav>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+</main>
+
+{% endblock content%}

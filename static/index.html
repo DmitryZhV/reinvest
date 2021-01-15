@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Реинвест-Сервис</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/favi.png" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style media="screen">
+    html,
+    body,
+    header,
+    .carousel{
+      height: 60vh;
+    }
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .carousel{
+        height: 100vh;
+      }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body,
+      header,
+      .carousel{
+        height: 100vh;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class='sk-fading-circle'>
+    <div class='sk-circle sk-circle-1'></div>
+    <div class='sk-circle sk-circle-2'></div>
+    <div class='sk-circle sk-circle-3'></div>
+    <div class='sk-circle sk-circle-4'></div>
+    <div class='sk-circle sk-circle-5'></div>
+    <div class='sk-circle sk-circle-6'></div>
+    <div class='sk-circle sk-circle-7'></div>
+    <div class='sk-circle sk-circle-8'></div>
+    <div class='sk-circle sk-circle-9'></div>
+    <div class='sk-circle sk-circle-10'></div>
+    <div class='sk-circle sk-circle-11'></div>
+    <div class='sk-circle sk-circle-12'></div>
+</div>
+  </div>
+
+
+  <div class="container">
+      <div class="row align-items-center mb-1">
+          <div class="col-12 col-md-6 col-lg-3">
+              <div class="welcome-note">
+
+                  <span class="text">ПН-ПТ 10.00-18.00</span>
+              </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+              <div class="welcome-note">
+                  <span class="text" ><a href="mailto:reinvest-service@mail.ru" style="color:red"><i class="fa fa-envelope"></i> reinvest-service@mail.ru</a></span>
+              </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+              <div class="welcome-note">
+                  <span class="text" style="color:red" ><i class="fas fa-phone"></i> +7(495)663-32-26</span>
+              </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+              <div class="welcome-note">
+                  <span class="text" style="color:red" ><i class="fab fa-viber"></i> <i class="fab fa-whatsapp"></i> <i class="fas fa-mobile-alt"></i> +7(916)260-02-66</span>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <!-- navbar -->
+    <nav class=" mt-10 navbar  sticky-top  navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container">
+        <a href="#" class="navbar-brand mr-3">
+          <img src="img/data/nav/logo.png" alt=""></a>
+
+
+
+        <button class="navbar-toggler" type="button"
+          data-toggle="collapse"  data-target= "#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" >
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link">О нас</a>
+            </li>
+            <!-- Dropdown -->
+            <!--
+             <li class="nav-item dropdown multi-level-dropdown">
+               <a href="#" id="menu-1" data-toggle="dropdown" class="nav-link dropdown-toggle">Каталог</a>
+               <ul class="dropdown-menu dropdown-danger" aria-labelledby="menu-1">
+                 <li class="dropdown-item dropdown-submenu p-1">
+                   <a href="#" id="menu-2" data-toggle="dropdown" class="nav-link dropdown-toggle">Термосублимационные<br>принтеры </a>
+                   <ul class="dropdown-menu dropdown-danger" aria-labelledby="menu-2">
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">DNP</a>
+                     </li>
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">MITSUBISHI</a>
+                     </li>
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">SINFONIA</a>
+                     </li>
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">HITI</a>
+                     </li>
+                   </ul>
+                 </li>
+                 <li class="dropdown-item dropdown-submenu p-1">
+                   <a href="#" data-toggle="dropdown" class="dropdown-toggle  w-100">Расходные материалы</a>
+                   <ul class="dropdown-menu mr-2 rounded-0  dropdown-danger border-0 z-depth-1 r-100 ">
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">Для<br>термосублимационных<br>принтеров DNP</a>
+                     </li>
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">Для<br>термосублимационных <br>принтеров MITSUBISHI<br>ELECNRIC</a>
+                     </li>
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">Для<br>термосублимационных <br>принтеров SINFONIA</a>
+                     </li>
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">Для<br>термосублимационных <br>принтеров HITI</a>
+                     </li>
+                   </ul>
+                 </li>
+                 <li class="dropdown-item dropdown-submenu p-1">
+                   <a href="#" data-toggle="dropdown" class="dropdown-toggle w-100">Терминалы и<br>фотокиоски</a>
+                   <ul class="dropdown-menu mr-2 rounded-0 dropdown-danger border-0 z-depth-1">
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">DNP</a>
+                     </li>
+                     <li class="dropdown-item p-1">
+                       <a href="#" class="drop-menu w-100">MITSUBISHI</a>
+                     </li>
+                    </ul>
+                 </li>
+                 <li class="dropdown-item p-1">
+                   <a href="#" class="drop-menu w-100">Дополнительные<br>принадлежности</a>
+                 </li>
+                 <li class="dropdown-item p-1">
+                   <a href="#" class="drop-menu w-100">Оборудование для<br>создания и сборки<br>альбомов / обложки<br>CLIXXPIXX</a>
+                 </li>
+                 <li class="dropdown-item p-1">
+                   <a href="#" class="drop-menu w-100">Экспресс фотоальбомы<br>MITSUBISHI / MAP</a>
+                 </li>
+                 <li class="dropdown-item p-1">
+                   <a href="#" class="drop-menu w-100">Экспресс сувениры</a>
+                 </li>
+               </ul>
+             </li> -->
+             <li class="nav-item ">
+               <a href="#" class="nav-link">Доставка и оплата</a>
+             </li>
+            <li class="nav-item ">
+              <a href="#" class="nav-link">Акции</a>
+            </li>
+            <li class="nav-item ">
+              <a href="#" class="nav-link">Сервис и обслуживание</a>
+            </li>
+            <li class="nav-item ">
+              <a href="#" class="nav-link">Помощь и FAQ</a>
+            </li>
+            <li class="nav-item ">
+              <a href="#" class="nav-link">Контакты</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="search-area">
+                <div class="search-btn"><i class="fa fa-search"></i></div>
+                <!-- Form -->
+                <div class="search-form">
+                    <input type="search" class="form-control" placeholder="Search">
+                    <input type="submit" class="d-none" value="Send">
+                </div>
+            </li>
+            <li class="cart-area">
+              <div class="cart--btn"><i class="fa fa-shopping-cart"></i> <span class="cart_quantity">2</span></div>
+
+              <!-- Cart Dropdown Content -->
+              <div class="cart-dropdown-content">
+                  <ul class="cart-list">
+                      <li>
+                          <div class="cart-item-desc">
+                              <a href="#" class="image">
+                                  <img src="img/data/products/N DNP DS-40.jpg" class="cart-thumb" alt="">
+                              </a>
+                              <div>
+                                  <a href="#" style="color:red">ПРИНТЕР DNP DS-40</a>
+                                  <p>1 x - <span class="price">45000 ₽</span></p>
+                              </div>
+                          </div>
+                          <span class="dropdown-product-remove"><i class="fas fa-trash-alt"></i></span>
+                      </li>
+                      <li>
+                          <div class="cart-item-desc">
+                              <a href="#" class="image">
+                                  <img src="img/data/products/Rx1-02.jpg" class="cart-thumb" alt="">
+                              </a>
+                              <div>
+                                  <a href="#" style="color:red">ПРИНТЕР DNP DS-40</a>
+                                  <p>2x - <span class="price">45000 ₽</span></p>
+                              </div>
+                          </div>
+                          <span class="dropdown-product-remove"><i class="fas fa-trash-alt"></i></span>
+                      </li>
+                  </ul>
+                  <div class="cart-pricing my-4">
+                      <ul>
+                          <li>
+                              <span>Подитог:</span>
+                              <span>90000 ₽</span>
+                          </li>
+                          <li>
+                              <span>Доставка:</span>
+                              <span>1000 ₽</span>
+                          </li>
+                          <li>
+                              <span>Итого:</span>
+                              <span>91000 ₽</span>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="cart-box">
+                      <a href="checkout-1.html" class="btn btn-danger d-block" >Корзина</a>
+                  </div>
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-6" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+                <i class="fas fa-user"></i> </a>
+              <div class="dropdown-menu dropdown-danger" aria-labelledby="navbarDropdownMenuLink-6">
+                <a class="dropdown-item" href="#">Регистрация</a>
+                <a class="dropdown-item" href="#">Вход</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+  <!-- end navbar -->
+<!-- carousel -->
+  <div id="carousel-ex" class="carousel slide carousel-fade " data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li class="active" data-target="#carousel-ex" data-slide-to="0"></li>
+        <li data-target="#carousel-ex" data-slide-to="1"></li>
+        <li data-target="#carousel-ex" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('img/data/banner-main/flexi_pic.jpg');
+          background-repeat: no-repeat; background-size: cover;">
+          <div class="weight-center mx-5 pl-5 mt-4">
+            <div class="text-left white-text mt-4 pt-4">
+              <div class="animated slideInLeft" style="font-size: 30px;">
+                <h1 class="h1-responsive"><strong>СОХРАНЯЙТЕ ЛУЧШИЕ</strong></h1>
+                <h1 class="h1-responsive"><strong>МОМЕНТЫ</strong></h1>
+              </div>
+              <div class="animated fadeInUp">
+              <a href="#" class="btn-floating btn-lg btn-danger">
+                <h4><strong>АКЦИИ</strong></h4>
+              </a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="view align-items-center" style="background-image: url('img/data/banner-main/PKina26.jpg');
+          background-repeat: no-repeat; background-size: cover;">
+          <div class="d-flex justify-content-center align-items-center">
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <!--
+              <h1 class="mb-4">
+                <strong>Web Developer Blog</strong>
+              </h1>
+
+              <p>
+                <strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, rem!</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit adipisci similique, architecto facilis quasi. Aliquam?</strong>
+              </p>
+              <a href="#" class="btn btn-outline-white btn-lg">
+                Lorem ipsum dolor. <i class="fa fa-graduation-cap ml-2"></i>
+              </a>
+            -->
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('img/data/banner-main/banner_akcii.jpg');
+          background-repeat: no-repeat; background-size: cover;">
+                <!--Caption
+           <div class="text-left white-text mt-20 mx-10">
+             <div class="animated slideInLeft">
+               <h1 class="h1-responsive">СОРАНЯЙТЕ ЛУЧШИЕ</h1>
+               <h1 class="h1-responsive">МОМЕНТЫ</h1>
+             </div>
+           </div>
+           -->
+          </div>
+        </div>
+
+      </div>
+      <!-- кнопки  лево - право -->
+      <a href="#carousel-ex" class="carousel-control-prev" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </a>
+      <a href="#carousel-ex" class="carousel-control-next" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </a>
+
+  </div>
+  <!-- end carousel -->
+
+<main>
+  <div class="container">
+    <!-- Категории -->
+    <div class="text-center mt-4 mb-4">
+      <div class="row animation fadeIn">
+        <div class="col-6 col-md-5 col-lg-3 mb-4">
+          <!-- Apparels Offer -->
+          <div class="apparels_offer_area">
+              <img src="img/data/category/b1.png" alt="Beach-Offer">
+              <div class="apparels_offer_info d-flex align-items-center">
+                  <div class="apparels-offer-content">
+                      <!--<h4>Apparel &amp; <br><span>Garments</span></h4>-->
+                      <a href="#" class="btn"><h4>Принтеры</h4> <i class="icofont-rounded-right"></i></a>
+                  </div>
+              </div>
+          </div>
+
+        </div>
+        <div class="col-6 col-md-5 col-lg-3 mb-4">
+          <div class="apparels_offer_area">
+              <img src="img/data/category/pic2.jpg" alt="Beach-Offer">
+              <div class="apparels_offer_info d-flex align-items-center">
+                  <div class="apparels-offer-content ">
+                      <!--<h4>Apparel &amp; <br><span>Garments</span></h4>-->
+                      <a href="#" class="btn "><h4 >РАСХОДНЫЕ<br>МАТЕРИАЛЫ</h4> <i class="icofont-rounded-right"></i></a>
+                  </div>
+              </div>
+          </div>
+
+        </div>
+        <div class="col-6 col-md-5 col-lg-3 mb-4">
+          <div class="apparels_offer_area">
+              <img src="img/data/category/b3.png" alt="Beach-Offer">
+              <div class="apparels_offer_info d-flex align-items-center">
+                  <div class="apparels-offer-content ">
+                      <!--<h4>Apparel &amp; <br><span>Garments</span></h4>-->
+                      <a href="#" class="btn "><h4 >ТЕРМИНАЛЫ<br>И КИОСКИ</h4> <i class="icofont-rounded-right"></i></a>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-5 col-lg-3 mb-4">
+          <div class="apparels_offer_area">
+              <img src="img/data/category/b4.png" alt="Beach-Offer">
+              <div class="apparels_offer_info d-flex align-items-center">
+                  <div class="apparels-offer-content ">
+                      <!--<h4>Apparel &amp; <br><span>Garments</span></h4>-->
+                      <a href="#" class="btn "><h4 >ФОТО ТОВАРЫ</h4> <i class="icofont-rounded-right"></i></a>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--
+    <div class="row">
+      <div class="col-6 col-md-5 col-lg-4 mt-4 mb-4">
+        <hr>
+      </div>
+      <div class="col-6 col-md-5 col-lg-4 text-center mt-4 mb-4">
+        <h4><b>РЕКОМЕНДУЕМ</b></h4>
+      </div>
+      <div class="col-6 col-md-5 col-lg-4  mt-4 mb-4">
+        <hr>
+      </div>
+    </div> -->
+    <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="section_heading new_arrivals ">
+                <h5>РЕКОМЕНДУЕМ</h5>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="new_arrivals_slides owl-carousel owl-theme">
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/N DNP DS-40.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/HTD6930_detail_a.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/N DNP DS-40.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <!-- Single Product -->
+      <div class="single-product-area">
+          <div class="product_image">
+              <!-- Product Image -->
+            <a href="#">
+              <img class="normal_img" src="img/data/products/N DNP DS-40.jpg" alt="">
+              <img class="hover_img" src="" alt="">
+            </a>
+              <!-- Product Badge -->
+              <div class="product_badge">
+                  <span>TOP</span>
+              </div>
+
+              <!-- Wishlist -->
+              <div class="product_wishlist">
+                  <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+              </div>
+
+              <!-- Compare -->
+              <div class="product_compare">
+                  <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+              </div>
+          </div>
+
+          <!-- Product Description -->
+          <div class="product_description">
+              <!-- Add to cart -->
+              <div class="product_add_to_cart">
+                  <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+              </div>
+
+              <!-- Quick View  product_quick_view -->
+              <div class="product_quick_view">
+                  <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+              </div>
+
+              <!--<p class="brand_name">DNP</p>-->
+              <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+              <div class="row d-flex justify-content-around align-items-center">
+              <h5 class="product-price"><b>80000 ₽</b></h5>
+              <div class="product_rating">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span>12</span>
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="item">
+      <h2>Tons of options</h2>
+    </div>
+    <div class="item">
+      <h2>Infinity</h2>
+    </div>
+    <div class="item">
+      <h2>Auto Width</h2>
+    </div>
+  </div>
+
+
+
+  <!--owl.carousel-->
+
+    <div class="row  animation fadeIn">
+      <div class="col-12 col-lg-8">
+      </div>
+        <div class="col-12 col-lg-4 mt-3">
+            <div class="section_heading featured">
+                <h5>Новые поступления</h5>
+            </div>
+        </div>
+    </div>
+  <div class="new_arrivals_slides owl-carousel owl-theme">
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/HTD6930_detail_a.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/N DNP DS-40.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <!-- Single Product -->
+    <div class="single-product-area">
+        <div class="product_image">
+            <!-- Product Image -->
+          <a href="#">
+            <img class="normal_img" src="img/data/products/Rx1-02.jpg" alt="">
+            <img class="hover_img" src="" alt="">
+          </a>
+            <!-- Product Badge -->
+            <div class="product_badge">
+                <span>TOP</span>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="product_wishlist">
+                <a href="wishlist.html"><i class="fa fa-heart"></i></a>
+            </div>
+
+            <!-- Compare -->
+            <div class="product_compare">
+                <a href="compare.html"><i class="fa fa-exchange-alt" ></i></a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product_description">
+            <!-- Add to cart -->
+            <div class="product_add_to_cart">
+                <a href="#"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+            </div>
+
+            <!-- Quick View  product_quick_view -->
+            <div class="product_quick_view">
+                <a href="#" data-toggle="modal" data-target="#quickview"><b> Купить в 1 клик</b></a>
+            </div>
+
+            <!--<p class="brand_name">DNP</p>-->
+            <a href="#"><i class="fa fa-arrows-h" ></i>ПРИНТЕР DNP DS-40</a>
+            <div class="row d-flex justify-content-around align-items-center">
+            <h5 class="product-price"><b>80000 ₽</b></h5>
+            <div class="product_rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <span>12</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <h2>Tons of options</h2>
+  </div>
+  <div class="item">
+    <h2>Infinity</h2>
+  </div>
+  <div class="item">
+    <h2>Auto Width</h2>
+  </div>
+</div>
+</div>
+  <!--end owl.carousel-->
+<!--e</div> nd  container-->
+<div class="container">
+    <div class="row  animation fadeIn">
+        <div class="col-12">
+            <div class="section_heading new_arrivals ">
+                <h5>НАШИ БРЕНДЫ</h5>
+            </div>
+        </div>
+    </div>
+    <!--<div class="row  animation fadeIn">
+      <div class="col-12 col-lg-9">
+      </div>
+        <div class="col-12 col-lg-3 mt-3">
+            <div class="section_heading featured">
+                <h5>НАШИ БРЕНДЫ</h5>
+            </div>
+        </div>
+    </div>-->
+
+
+      <div class="row  animation fadeIn d-flex">
+        <div class="col-12 col-md-5 col-lg-3 mb-4">
+          <div class="view overlay">
+            <img class="card-img-top" src="img/data/category/dnp_color.jpg" alt="DNP">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="col-12 col-md-5 col-lg-3 mb-4">
+          <div class="view overlay">
+            <img class="card-img-top" src="img/data/category/hiti_bw.png" alt="DNP">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-5 col-lg-3 mb-4">
+          <div class="view overlay">
+            <img class="card-img-top" src="img/data/category/mitsu_color.png" alt="MITSUBISHI">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-5 col-lg-3 mb-4">
+          <div class="view overlay">
+            <img class="card-img-top" src="img/data/category/sinfo_bw.png" alt="SINFONIA">
+            <a href="">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- Special Featured Area -->
+  <section class="special_feature_area mt-3 p-2">
+      <div class="container">
+          <div class="row ">
+              <!-- Single Feature Area -->
+              <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="single_feature_area mb-3 d-flex  align-items-center h-100">
+                      <div class="feature_icon">
+                          <i class="fa fa-truck"></i>
+                          <span><i class="fa fa-check"></i></span>
+                      </div>
+                      <div class="feature_content d-flex align-self-start flex-wrap mt-2">
+                          <h6><b>Доставка по всей России</b></h6>
+
+                          <p>Доставим любой транспортной компанией</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Single Feature Area -->
+              <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="single_feature_area mb-3 d-flex  align-items-center h-100">
+                      <div class="feature_icon">
+                          <i class="fa fa-wrench"></i>
+                          <span><i class="fa fa-check"></i></span>
+                      </div>
+                      <div class="feature_content  d-flex align-self-start flex-wrap mt-2">
+                          <h6><b>Собственный сервисный центр</b></h6>
+                          <p>Производим ремонт любой сложности
+                             с запчастями от производителя</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Single Feature Area -->
+              <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="single_feature_area mb-3 d-flex  align-items-center h-100">
+                      <div class="feature_icon">
+                          <i class="fa fa-credit-card"></i>
+                          <span><i class="fa fa-check"></i></span>
+                      </div>
+                      <div class="feature_content d-flex align-self-start flex-wrap  mt-2">
+                          <h6><b>Удобная оплата</b></h6>
+                          <p>Принимаем к оплате любые карты</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Single Feature Area -->
+              <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="single_feature_area mb-3 d-flex  align-items-center h-100">
+                      <div class="feature_icon">
+                          <i class="fa fa-star "></i>
+                          <span><i class="fa fa-check"></i></span>
+                      </div>
+                      <div class="feature_content  d-flex align-self-start flex-wrap  mt-2">
+                          <h6><b>Демонстрационный зал</b></h6>
+                          <p>Покажем любой
+                             товар в действии и обучим его использованию</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Special Featured Area -->
+
+
+
+
+</main>
+
+
+<footer class="page-footer text-center font-small mt-4 animation fadeIn elegant-color-dark">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-lg3 col-md-3 my-4">
+        <p class="text-left"><strong>О нас</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left"><i class="fas fa-phone"></i> +7(495)663-32-26</p>
+        <p class="text-left"><i class="fas fa-mobile-alt"></i> +7(916)260-02-66</p>
+        <p class="text-left"><a href="mailto:reinvest-service@mail.ru"><i class="fa fa-envelope"></i> reinvest-service@mail.ru</a></p>
+        </div>
+
+      <div class="col-lg3 col-md-3 my-4">
+
+        <p class="text-left"><strong>Наши услуги</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left">Тел./Факс:  +7(495)663-32-26</p>
+        <p class="text-left">Моб:  +7(916)260-02-66</p>
+        <p class="text-left">Email: reinvest-service@mail.ru</p>
+
+      </div>
+      <div class="col-lg3 col-md-3 my-4">
+
+        <p class="text-left"><strong>Аккаунт</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left">Тел./Факс:  +7(495)663-32-26</p>
+        <p class="text-left">Моб:  +7(916)260-02-66</p>
+        <p class="text-left">Email: reinvest-service@mail.ru</p>
+
+      </div>
+      <div class="col-lg3 col-md-3 my-4">
+
+        <p class="text-left"><strong>Статьи</strong></p>
+        <hr class=" white my-2">
+        <p class="text-left">Адрес:  г. Москва, Щелковское шоссе,<br> д. 100, корп. 1, 4 этаж<br> (Центральный офис)</p>
+        <p class="text-left">Тел./Факс:  +7(495)663-32-26</p>
+        <p class="text-left">Моб:  +7(916)260-02-66</p>
+        <p class="text-left">Email: reinvest-service@mail.ru</p>
+
+      </div>
+    </div>
+
+
+  </div>
+  <!--<div class="pt-4">
+    <a href="#" role="button" class="btn btn-outline-white">WDB <i class="fa fa-graduation-cap ml-2"></i></a>
+    <a href="#" role="button" class="btn btn-outline-white">Online shop <i class="fa fa-graduation-cap ml-2"></i></a>
+  </div>
+  <div class="container">
+    <hr class=" white ">
+  </div>
+
+  <div class="pb-4">
+    <a href="#">
+      <i class="fab fa-fasebook mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-twitter mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-youtube mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-google-plus mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-dribbble mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-pinterest mr-3"></i>
+    </a>
+    <a href="#">
+      <i class="fab fa-instagram mr-3"></i>
+    </a>
+  </div>-->
+  <div class="footer-copyright py-2">
+    © Реинвест-Сервис 2020
+  </div>
+</footer>
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="js/default/scrollup.js"></script>
+
+
+  <script type="text/javascript" src="js/default/active.js"></script>
+
+</body>
+</html>

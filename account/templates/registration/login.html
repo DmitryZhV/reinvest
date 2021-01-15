@@ -1,0 +1,29 @@
+{% extends "catalog/product/base.html" %}
+{% block title %}Вход{% endblock %}
+
+	{% block content %}
+		<div class="container">
+			<h1>Вход</h1>
+			{% if form.errors %}
+				<p>
+					Такое имя пользователя или пароль не существует.
+					Попробуйте снова.
+				</p>
+			{% else %}
+				<p>Пожалуйста, используйте эту форму для входа.  Если у вас нет 
+				account, <a href="{% url "register" %}">зарегистрируйтесь</a></p>
+			{% endif %}
+			<div class="login-form">
+				<form action="{% url 'login' %}" method="post">
+					
+					{{ form.as_p }}
+					<p><a href="{% url "password_reset" %}">Забыли пароль?</a></p>
+					{% csrf_token %}
+					<input type="hidden" name="next" value="{{ next }}" />
+					<p><input class="btn danger-color text-white font-weight-bold" type="submit" value="Вход"></p>
+				</form>
+			</div>
+		</div>
+	{% endblock %}
+
+
