@@ -48,17 +48,9 @@ class Product(models.Model):
     discount = models.IntegerField("Скидка", default=0 )
     category=models.ForeignKey(Category, verbose_name="Категория", blank=True, null=True, default=None, on_delete=models.CASCADE)
     short_description=models.TextField("Краткое описание", blank=True, null=True, default=None)
-    description=models.TextField("Полное описание", blank=True, null=True, default=None)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=0, default=0)
-    country = models.CharField("Страна происхождения", max_length=64, blank=True, null=True, default=None)
-    weight = models.DecimalField("Вес", max_digits=10, decimal_places=1, default=0)
-    height = models.DecimalField("Высота", max_digits=10, decimal_places=1, default=0)
-    width = models.DecimalField("Ширина", max_digits=10, decimal_places=1, default=0)
-    length = models.DecimalField("Длина", max_digits=10, decimal_places=1, default=0)
-    speed = models.DecimalField("Скорость печати", max_digits=10, decimal_places=0, default=0)
-    formats = models.CharField("Форматы печати", max_length=64, blank=True, null=True, default=None)
-    capacity = models.DecimalField("Емкость лотка", max_digits=10, decimal_places=0, default=0)
-    print_type = models.CharField("Тип печати", max_length=64, blank=True, null=True, default=None)
+    middlestar = models.SmallIntegerField("Звезда рейтинга", default=0)
+    countStar = models.DecimalField("Количество отзывов", max_digits=5, decimal_places=0, default=0)
     manufacturer=models.ForeignKey(Manufacturer, verbose_name="Бренд", blank=True, null=True, default=None, on_delete=models.SET_NULL)
     is_active=models.BooleanField("Активен",default=True)
     buyers_choice=models.BooleanField("Выбор_покупателей",default=False)
@@ -99,6 +91,23 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = 'Изображение товара'
         verbose_name_plural = 'Изображения товаров'
+
+class ProductDetail(models.Model):
+    product=models.ForeignKey(Product, verbose_name="Товар", blank=True, null=True, default=None, on_delete=models.CASCADE)
+    description=models.TextField("Полное описание", blank=True, null=True, default=None)
+    country = models.CharField("Страна происхождения", max_length=64, blank=True, null=True, default=None)
+    weight = models.DecimalField("Вес", max_digits=10, decimal_places=1, default=0)
+    height = models.DecimalField("Высота", max_digits=10, decimal_places=1, default=0)
+    width = models.DecimalField("Ширина", max_digits=10, decimal_places=1, default=0)
+    length = models.DecimalField("Длина", max_digits=10, decimal_places=1, default=0)
+    speed = models.DecimalField("Скорость печати", max_digits=10, decimal_places=0, default=0)
+    formats = models.CharField("Форматы печати", max_length=64, blank=True, null=True, default=None)
+    capacity = models.DecimalField("Емкость лотка", max_digits=10, decimal_places=0, default=0)
+    print_type = models.CharField("Тип печати", max_length=64, blank=True, null=True, default=None)
+
+    class Meta:
+        verbose_name = 'Характеристики товара'
+        verbose_name_plural = 'Характеристики товаров'
 
 class RatingStar(models.Model):
     """docstring for ."""

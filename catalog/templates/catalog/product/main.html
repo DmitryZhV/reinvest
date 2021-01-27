@@ -248,13 +248,35 @@
                   <a href="{{product.get_absolute_url}}"><i class="fa fa-arrows-h" ></i>{{ product.name }}</a>
                   <div class="price-row row d-flex justify-content-between align-items-center">
                     <h6 class="product-price"><b>{{ product.price }} ₽</b></h6>
+                    
                     <div class="product_rating">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <span>12</span>
+                        {% if product.middlestar|add:'0' >= 1 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 2 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 3 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 4 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 5 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        
+                        <span>{{product.countStar}}</span>
                     </div>
                   </div>
                   <!-- Add to cart -->
@@ -328,12 +350,33 @@
                   <div class="price-row row d-flex justify-content-between align-items-center">
                     <h5 class="product-price"><b>{{ product.price }} ₽</b></h5>
                     <div class="product_rating">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <span>12</span>
+                        {% if product.middlestar|add:'0' >= 1 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 2 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 3 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 4 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if product.middlestar|add:'0' >= 5 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="far fa-star" aria-hidden="true"></i>
+                        {% endif %}
+                        
+                        <span>{{product.countStar}}</span>
                     </div>
                   </div>
                   <!-- Add to cart -->

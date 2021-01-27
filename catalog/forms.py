@@ -10,10 +10,10 @@ class ReviewForm(forms.ModelForm):
     star = forms.ModelChoiceField(
         queryset=RatingStar.objects.all(), widget=forms.RadioSelect(), empty_label=None
     )
-    print(star)
+    #print(star)
     class Meta:
         model = Reviews
-        fields = ("star", "name", "email", "text")   #, "captcha"
+        fields = ("star", "name", "email", "text") #, "captcha")
        # widgets = {
             
          #   "name": forms.TextInput(attrs={"class": "form-control border"}),

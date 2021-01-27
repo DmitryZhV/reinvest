@@ -159,12 +159,33 @@
                         <p>{{ product.category.name }}</p>
                         <p>{{ product.manufacturer.name }}</p>
                         <div class="single_product_ratings mb-2">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            <span class="text-muted">({{ product.reviews_set.count }})</span>
+                            {% if product.middlestar|add:'0' >= 1 %}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="far fa-star" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if product.middlestar|add:'0' >= 2 %}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="far fa-star" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if product.middlestar|add:'0' >= 3 %}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="far fa-star" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if product.middlestar|add:'0' >= 4 %}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="far fa-star" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if product.middlestar|add:'0' >= 5 %}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="far fa-star" aria-hidden="true"></i>
+                            {% endif %}
+                            
+                            <span>{{product.countStar}}</span> 
                             
                         </div>
                         <h4 class="price mb-4">{{ product.price }} ₽<span></span></h4>
@@ -295,35 +316,9 @@
                                                     <div class="single_user_review mb-15">
                                                         
                                                         
-                                                        <div class="review-rating">
-                                                            {% if review.star %}
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                                 <span>{{review.star }}</span> 
-                                                            {% else %}
-                                                                <i class="far fa-star" aria-hidden="true"></i>
-                                                                <span>{{review.star}}</span>
-                                                            {% endif %}
-                                                            {% if review.star <= 2 %}
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                            {% else %}
-                                                                <i class="far fa-star" aria-hidden="true"></i>
-                                                                <span>{{review.star}}</span>
-                                                            {% endif %}
-                                                            {% if review.star <= 3 %}
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                            {% else %}
-                                                                <i class="far fa-star" aria-hidden="true"></i>
-                                                            {% endif %}
-                                                            {% if review.star <= 4 %}
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                            {% else %}
-                                                                <i class="far fa-star" aria-hidden="true"></i>
-                                                            {% endif %}
-                                                            {% if review.star <= 5 %}
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                            {% else %}
-                                                                <i class="far fa-star" aria-hidden="true"></i>
-                                                            {% endif %}
+                                                        <div class="review-rating" id="star{{review.id}}" data-star= "{{ review.star }}">
+                                                            
+                                                            
                                                             
                                                         </div>
                                                         
@@ -492,15 +487,36 @@
                                 <!--<p class="brand_name">Top</p>-->
                                 <a href="{{product_item.product.get_absolute_url}}">{{ product_item.product.name }}</a>
                                 <div class="row d-flex justify-content-around align-items-center">
-                                <h5 class="product-price"><b>{{ product_item.product.price }} ₽</b></h5>
-                                <div class="product_rating">
-				              	  <i class="fa fa-star" aria-hidden="true"></i>
-				                  <i class="fa fa-star" aria-hidden="true"></i>
-				                  <i class="fa fa-star" aria-hidden="true"></i>
-				                  <i class="fa fa-star" aria-hidden="true"></i>
-				                  <i class="fa fa-star" aria-hidden="true"></i>
-				                  <span>12</span>
-				              </div>
+                                    <h5 class="product-price"><b>{{ product_item.product.price }} ₽</b></h5>
+                                    <div class="product_rating">
+                                        {% if product_item.product.middlestar|add:'0' >= 1 %}
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% else %}
+                                            <i class="far fa-star" aria-hidden="true"></i>
+                                        {% endif %}
+                                        {% if product_item.product.middlestar|add:'0' >= 2 %}
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% else %}
+                                            <i class="far fa-star" aria-hidden="true"></i>
+                                        {% endif %}
+                                        {% if product_item.product.middlestar|add:'0' >= 3 %}
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% else %}
+                                            <i class="far fa-star" aria-hidden="true"></i>
+                                        {% endif %}
+                                        {% if product_item.product.middlestar|add:'0' >= 4 %}
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% else %}
+                                            <i class="far fa-star" aria-hidden="true"></i>
+                                        {% endif %}
+                                        {% if product_item.product.middlestar|add:'0' >= 5 %}
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% else %}
+                                            <i class="far fa-star" aria-hidden="true"></i>
+                                        {% endif %}
+                                        
+                                        <span>{{product_item.product.countStar}}</span>  
+                                </div>
 				              </div>
                             </div>
                         </div>

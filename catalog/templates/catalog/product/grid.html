@@ -56,14 +56,20 @@
                       <div class="widget catagory mb-30">
                           <h6 class="widget-title">Бренды</h6>
                           <div class="widget-desc">
+                              <div class="custom-control custom-checkbox d-flex align-items-center mb-2 control-checkbox-all">
+                                  <input type="checkbox" class="custom-control-input" id="customCheckAll" name="brand" value="0" checked >
+                                  <label class="custom-control-label" for="customCheckAll"> все </label>
+                              </div> 
+                              <div class="count-category">
                               {% for brand in brands %}
                               <!-- Single Checkbox -->
 
-                              <div class="custom-control custom-checkbox d-flex align-items-center mb-2">
-                                  <input type="checkbox" class="custom-control-input" id="customCheck{{ brand.id }}" name="brand" value="{{ brand.id}}" >
+                              <div class="custom-control custom-checkbox d-flex align-items-center mb-2 control-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="customCheck{{ brand.id }}" name="brand" value="{{ brand.id}}"  >
                                   <label class="custom-control-label" for="customCheck{{ brand.id }}">{{ brand.name }} <span class="text-muted">({{ brand.count }})</span></label>
                               </div>
                               {% endfor %}
+                              </div>
                           </div>
                       </div>
 
@@ -72,39 +78,23 @@
                           <h6 class="widget-title">Диапазон цены</h6>
                           <div class="widget-desc">
                               <div class="slider-range">
-                                  <div data-min="0" data-max="100000" data-unit="₽" id="customPrice"
-                                  class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="100000" data-label-result="Цена:">
+                                  <div data-min="0" data-max="500000" data-unit="₽" id="customPrice"
+                                  class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="500000" data-label-result="Цена:">
                                       <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                       <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                       <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                   </div>
-                                  <div class="range-price">Цена: 0 - 100000</div>
+                                  <div class="range-price">Цена: 0 - 500000</div>
                               </div>
                           </div>
                       </div>
                       <div class="widget text-center" >
-                        <button class="btn btn-danger" id="button-filter"  type="submit"  >Применить</button>
+                        <button class="btn btn-rein"  id="button-filter"  type="submit"  >Применить</button>
                       </div>
                     </form>
                                          
 
-                      <!-- Single Widget -->
-                      <div class="widget rating mb-30">
-                          <h6 class="widget-title">Average Rating</h6>
-                          <div class="widget-desc">
-                              <ul>
-                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <span class="text-muted">(103)</span></a></li>
-
-                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(78)</span></a></li>
-
-                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(47)</span></a></li>
-
-                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(9)</span></a></li>
-
-                                  <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <span class="text-muted">(3)</span></a></li>
-                              </ul>
-                          </div>
-                      </div>
+                     
 
                       
                   </div>
@@ -121,11 +111,12 @@
                               <a href="" id="button-list" data-toggle="tooltip" data-placement="top" title="Список"><i class="fas fa-th-list"></i></a>
                           </div>
                       </div>
-                      <select class="small right">
-                          <option selected>Short by Popularity</option>
-                          <option value="1">Short by Newest</option>
-                          <option value="2">Short by Sales</option>
-                          <option value="3">Short by Ratings</option>
+                      <select class="small right" id="sort_by">
+                          <option value="0" selected>По наименованию</option>
+                          <option value="1">По популярности</option>
+                          <option value="2">По рейтингу</option>
+                          <option value="3">Цена по возрастанию</option>
+                          <option value="4">Цена по убыванию</option>
                       </select>
                   </div>
 
@@ -165,34 +156,61 @@
                               </div>
 
                               <!-- Product Description -->
-                              <div class="product_description">
-                                  <!-- Add to cart -->
-                                  <div class="product_add_to_cart">
-                                      <a href="#" class="btnCart" data-product_id="{{product.id}}"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
-                                  </div>
+                              <div class="product_description ">
+                                   <!--<p class="brand_name">DNP</p>-->
+                                    <div>
+                                        <p>{{ product.category.name }}</p>
+                                        <p>{{ product.manufacturer.name }}</p>
+                                        <a href="{{product.get_absolute_url}}"><i class="fa fa-arrows-h" ></i>{{ product.name }}</a>
+                                    </div>
+                                    <div class="price-row row d-flex justify-content-between ">
+                                        <div>
+                                        <h5 class="product-price"><b>{{ product.price }} ₽</b></h5>
+                                        </div>
+                                        <div class="product_rating">
+                                            {% if product.middlestar|add:'0' >= 1 %}
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            {% else %}
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            {% endif %}
+                                            {% if product.middlestar|add:'0' >= 2 %}
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            {% else %}
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            {% endif %}
+                                            {% if product.middlestar|add:'0' >= 3 %}
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            {% else %}
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            {% endif %}
+                                            {% if product.middlestar|add:'0' >= 4 %}
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            {% else %}
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            {% endif %}
+                                            {% if product.middlestar|add:'0' >= 5 %}
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            {% else %}
+                                                <i class="far fa-star" aria-hidden="true"></i>
+                                            {% endif %}
+                                            
+                                            <span>{{product.countStar}}</span>            
+                                        </div>
+                                            
+                                            
+                                        <!-- </div> -->
+                                    </div>
+                                    <!-- Add to cart -->
+                                    <div class="product_add_to_cart">
+                                        <a href="#" class="btnCart" data-product_id="{{product.id}}"><i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+                                    </div>
 
-                                  <!-- Quick View  product_quick_view -->
-                                  <div class="product_quick_view">
-                                      <a href="#" class="product_quickview"  data-product_id="{{product.id}}" data-toggle="modal" data-target="#quickview">
-                                      <i class="fas fa-eye"></i><b> Просмотр</b></a>
-                                  </div>
-
-                                  <!--<p class="brand_name">DNP</p>-->
-                                    <p>{{ product.category.name }}</p>
-                                    <p>{{ product.manufacturer.name }}</p>
-                                     <a href="{{product.get_absolute_url}}"><i class="fa fa-arrows-h" ></i>{{ product.name }}</a>
-                                    <div class="row d-flex justify-content-around align-items-center">
-                                    <h5 class="product-price"><b>{{ product.price }} ₽</b></h5>
-                                    <div class="product_rating">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <span>12</span>
+                                    <!-- Quick View  product_quick_view -->
+                                    <div class="product_quick_view">
+                                        <a href="#" class="product_quickview"  data-product_id="{{product.id}}" data-toggle="modal" data-target="#quickview">
+                                        <i class="fas fa-eye"></i><b> Просмотр</b></a>
                                     </div>
                                 </div>
-                              </div>
                           </div>
                         </div>
                         {% endfor %}

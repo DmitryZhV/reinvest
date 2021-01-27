@@ -1,8 +1,25 @@
 $(document).ready(function(){
 	var formBasket = $('#form_bay_prod_datail');
 	var formFilter = $('#filter');
-	console.log(formFilter);
+	var sortBy= $('#sort_by');
+	var reviewStar = $('.review-rating');
+	$.each( reviewStar, function( index, value ){
+		var rating = $(value).data('star');
+		var countStar = $(value).data('count');
+		var idStar = $(value).attr('id');//$(value).id
+		(rating >= 1) ?  $('#'+idStar).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#'+idStar).append('<i class="far fa-star" aria-hidden="true"></i>');
+		(rating >= 2) ?  $('#'+idStar).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#'+idStar).append('<i class="far fa-star" aria-hidden="true"></i>');
+		(rating >= 3) ?  $('#'+idStar).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#'+idStar).append('<i class="far fa-star" aria-hidden="true"></i>');
+		(rating >= 4) ?  $('#'+idStar).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#'+idStar).append('<i class="far fa-star" aria-hidden="true"></i>');
+		(rating >= 5) ?  $('#'+idStar).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#'+idStar).append('<i class="far fa-star" aria-hidden="true"></i>');
+		{countStar&&$('#'+idStar).append('<span> '+countStar+'</span> ')};
+		console.log(rating + idStar + ' '+countStar);
+		
+	})
+	//console.log(reviewStar);
+	var page=1;
 	var buttonGridList=1;
+	var sortVal=0;
 	$('.category').hide();
 
 
@@ -122,21 +139,35 @@ $(document).ready(function(){
 
 	calculateBasketAmount();
 	//Ajax фильтр по товару
-	formFilter.on('submit', function(e){
-		e.preventDefault();
+	function getFilter(){
 		var price = $('.slider-range-price')
 		var minPrice = price.slider( "values", 0 );
 		var maxPrice =  price.slider( "values", 1 );
-		var url = this.action;
-		var data = new URLSearchParams(new FormData(this)).toString();
+		console.log(this)
+		console.log(formFilter[0])
+		var url = formFilter[0].action;
+		var data = new URLSearchParams(new FormData(formFilter[0])).toString();
+		console.log(url);
 		console.log("&price="+minPrice+"&price="+maxPrice);
 		console.log(maxPrice);
 		console.log(data);
-
-		$.get(url+"/?"+data+"&price="+minPrice+"&price="+maxPrice, function(data){
+		var dataPage = "0"
+		if(page>1) { dataPage=page}
+		console.log(dataPage)
+		$.get(url+"/?"+data+"&price="+minPrice+"&price="+maxPrice+"&page="+ dataPage+"&sort="+sortVal, function(data){
 					console.log(data)
 					console.log(data.products);
-					
+					const page = data.page
+					const pages = data.pages
+					$('.count-category').html("");
+					$.each(data.brands, function(k, v){
+						$('.count-category').append('\
+						<div class="custom-control custom-checkbox d-flex align-items-center mb-2 control-checkbox">\
+							<input type="checkbox" class="custom-control-input" id="customCheck'+v.id+'" name="brand" value="'+v.id+'" chacked="'+v.active+'" >\
+							<label class="custom-control-label" for="customCheck'+v.id+'">'+v.name+' <span class="text-muted"> ('+v.count +')</span></label>\
+						</div>');
+						$('#customCheck'+v.id).prop('checked', v.active);
+					});
 					if(buttonGridList){
 						$('.shop_list_product_area').addClass('shop_grid_product_area');
 						$('.shop_grid_product_area').removeClass('shop_list_product_area');
@@ -182,24 +213,27 @@ $(document).ready(function(){
 												<a href="/'+v.product__id+'/'+v.product__url+'"><i class="fa fa-arrows-h" ></i>'+v.product__name+'</a>\
 												<div class="row d-flex justify-content-around align-items-center">\
 												<h5 class="product-price"><b>'+v.product__price+' ₽</b></h5>\
-												<div class="product_rating">\
-														<i class="fa fa-star" aria-hidden="true"></i>\
-														<i class="fa fa-star" aria-hidden="true"></i>\
-														<i class="fa fa-star" aria-hidden="true"></i>\
-														<i class="fa fa-star" aria-hidden="true"></i>\
-														<i class="fa fa-star" aria-hidden="true"></i>\
-														<span>12</span>\
+												<div class="product_rating" id="star'+v.product__id+'">\
 												</div>\
 											</div>\
 										</div>\
 								</div>\
 							</div>');
+							id=v.product__id;
+							rating=v.product__middlestar;
+							(rating >= 1) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+							(rating >= 2) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+							(rating >= 3) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+							(rating >= 4) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+							(rating >= 5) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+							$('#star'+id).append('<span> '+v.product__countStar+'</span> ');
 						});
 					}else{
 						$('.shop_grid_product_area').addClass('shop_list_product_area');
 						$('.shop_list_product_area').removeClass('shop_grid_product_area');
 						$('.row_grid_product_area').removeClass('justify-content-center');
 						$('.row_grid_product_area').html("");
+						$('.shop_pagination_area').html("");
 						$.each(data.products, function(k, v){
 							$('.row_grid_product_area').append('\
 								<div class="col-12">\
@@ -235,15 +269,64 @@ $(document).ready(function(){
 	                                </div>\
 	                             </div>');
 						});	
-					}
-					
-					
+					};
+					$('.shop_pagination_area').append('\
+					<nav aria-label="Page navigation">\
+						<ul class="pagination pagination-sm justify-content-center">\
+						</ul>\
+					</nav>');
+					for(var i=1; i<=pages; i++) {
+						$('.pagination').append('\
+								<li class="page-item pages'+i+'">\
+                					<a class="page-link" href="#" id="page" data-page="'+i+'">'+ i +'</a>\
+								</li>');
+						
+						if(i == page) $('.pages'+i).addClass('active');
+					};
+					window.scrollTo(0,0);
 					
 				});
 
+	}
+	//
+	formFilter.on('submit', function(e){
+		e.preventDefault();
+		getFilter();
 	});
-	
-	
+	// Действия при нажатии на кнопку страница
+	$(document).on('click', '#page', function(e){
+		e.preventDefault();
+		page = $(this).data("page");
+		
+		getFilter(page, sortVal);
+	});
+
+	sortBy.on('change', function(){
+		
+		sortVal = $(this).val()
+		console.log('changeSort='+sortVal);
+		getFilter(page, sortVal);
+	})
+
+	formFilter.on('change', function(e){
+		e.preventDefault();
+		console.log('change');
+		var data1 = $('#customCheckAll input:checkbox:checked');
+		var data =  $('#filter .control-checkbox input:checkbox:checked').length;
+		
+
+		(data) ? $('#customCheckAll').prop('checked', false) :  $('#customCheckAll').prop('checked', true);
+		
+	});
+
+	formFilter.on('click','#customCheckAll', function(){
+		//e.preventDefault();
+		//if($(this).is(':checked'))
+		$(this).prop('checked', true);
+		$('.control-checkbox input:checkbox').prop('checked', false);
+		
+	});
+
 	$(document).on('click', "#button-list", function(e){
 		e.preventDefault();
 		if(buttonGridList){
