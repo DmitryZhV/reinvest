@@ -53,7 +53,7 @@ class Product(models.Model):
     countStar = models.DecimalField("Количество отзывов", max_digits=5, decimal_places=0, default=0)
     manufacturer=models.ForeignKey(Manufacturer, verbose_name="Бренд", blank=True, null=True, default=None, on_delete=models.SET_NULL)
     is_active=models.BooleanField("Активен",default=True)
-    buyers_choice=models.BooleanField("Выбор_покупателей",default=False)
+    buyers_choice=models.DecimalField("Выбор_покупателей", max_digits=10, decimal_places=0, default=0)
     latest=models.BooleanField("Последние поступления",default=True)
     created=models.DateTimeField(auto_now_add=True, auto_now=False)
     updated=models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -95,6 +95,7 @@ class ProductImage(models.Model):
 class ProductDetail(models.Model):
     product=models.ForeignKey(Product, verbose_name="Товар", blank=True, null=True, default=None, on_delete=models.CASCADE)
     description=models.TextField("Полное описание", blank=True, null=True, default=None)
+    characteristics=models.TextField("Характиристика", blank=True, null=True, default=None)
     country = models.CharField("Страна происхождения", max_length=64, blank=True, null=True, default=None)
     weight = models.DecimalField("Вес", max_digits=10, decimal_places=1, default=0)
     height = models.DecimalField("Высота", max_digits=10, decimal_places=1, default=0)

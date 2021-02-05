@@ -52,7 +52,7 @@
                   <div class="item">
                     <div class="single-product-area">
                       <div class="product_image">
-                         <img class="normal_img" src="/media/product_images/N_RX1HS_4X6-273x273_NfyZ14d.jpg" alt="">
+                         <img class="normal_img" src="" alt="">
                       </div>
                       <h6 class="title">Картридж + Фотобумага DNP DS-RX1 4x6 (10x15)</h6>
                     </div>
@@ -250,27 +250,27 @@
                     <h6 class="product-price"><b>{{ product.price }} ₽</b></h6>
                     
                     <div class="product_rating">
-                        {% if product.middlestar|add:'0' >= 1 %}
+                        {% if product.middlestar >= 1 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 2 %}
+                        {% if product.middlestar >= 2 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 3 %}
+                        {% if product.middlestar >= 3 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 4 %}
+                        {% if product.middlestar >= 4 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 5 %}
+                        {% if product.middlestar >= 5 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
@@ -348,29 +348,29 @@
                   <p>{{ product.manufacturer.name }}</p>
                   <a href="{{product.get_absolute_url}}"><i class="fa fa-arrows-h" ></i>{{ product.name }}</a>
                   <div class="price-row row d-flex justify-content-between align-items-center">
-                    <h5 class="product-price"><b>{{ product.price }} ₽</b></h5>
+                    <h6 class="product-price"><b>{{ product.price }} ₽</b></h6>
                     <div class="product_rating">
-                        {% if product.middlestar|add:'0' >= 1 %}
+                        {% if product.middlestar >= 1 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 2 %}
+                        {% if product.middlestar >= 2 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 3 %}
+                        {% if product.middlestar >= 3 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 4 %}
+                        {% if product.middlestar >= 4 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
                         {% endif %}
-                        {% if product.middlestar|add:'0' >= 5 %}
+                        {% if product.middlestar >= 5 %}
                             <i class="fa fa-star" aria-hidden="true"></i>
                         {% else %}
                             <i class="far fa-star" aria-hidden="true"></i>
@@ -379,12 +379,22 @@
                         <span>{{product.countStar}}</span>
                     </div>
                   </div>
+                   
                   <!-- Add to cart -->
                   <div class="product_add_to_cart">
+                  {% if product.rest %}
                       <a href="#" class="btnCart"  data-product_name="{{product.name}}" data-product_id= "{{product.id}}">
                           <i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>
+                  {% else %}
+                      <a href="#" class="btnCart" data-product_name="{{product.name}}" data-product_id= "{{product.id}}"> <b>Под заказ</b></a>
+                  {% endif %}
                   </div>
-
+                  
+                        
+                            
+                        
+                                
+                 
                   <!-- Quick View  product_quick_view -->
                   <div class="product_quick_view">
                       <a href="#" class="product_quickview"  data-product_id="{{product.id}}" data-toggle="modal" data-target="#quickview">

@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 
 # Register your models here.
 
-from .models import Category, Product, ProductImage, RatingStar, Rating, Reviews, Manufacturer
+from .models import Category, Product, ProductImage, RatingStar, Rating, Reviews, Manufacturer, ProductDetail
 
 #from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
@@ -12,8 +12,9 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class ProductAdminForm(forms.ModelForm):
     description = forms.CharField(label="Полное описание", widget=CKEditorUploadingWidget())
+    characteristics = forms.CharField(label="Характиристики", widget=CKEditorUploadingWidget())
     class Meta:
-        model = Product
+        model = ProductDetail
         fields = '__all__'
 
 class ProductImageInline(admin.TabularInline):
@@ -45,7 +46,7 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline]
     prepopulated_fields = {'url': ('name',)}
     
-    form = ProductAdminForm
+    #form = ProductAdminForm
     
     class Meta:
         model = Product
@@ -57,6 +58,15 @@ class ProductImageAdmin(admin.ModelAdmin):
     
     class Meta:
         model = ProductImage
+
+@admin.register(ProductDetail)
+class ProductDetailAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in ProductDetail._meta.fields]
+    form = ProductAdminForm
+
+    class Meta:
+        model = ProductDetail
+
 
 admin.site.register(ProductImage, ProductImageAdmin)
 admin.site.register(RatingStar)

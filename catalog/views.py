@@ -4,8 +4,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http.response import JsonResponse, HttpResponse
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
-from .models import Product, ProductImage, Category, Manufacturer, Reviews
+from .models import Product, ProductImage, Category, Manufacturer, Reviews, ProductDetail
 from .forms import ReviewForm
+
 
 #from django.template.context_processors import request
 
@@ -23,7 +24,7 @@ class BrandPrice:
 
 def product_main(request):
     categories= Category.objects.all()
-    products_buyers=Product.objects.filter(buyers_choice=True)
+    products_buyers=Product.objects.filter(buyers_choice__gt=0)
     products_latest=Product.objects.filter(latest=True)
     products_images = ProductImage.objects.filter(is_active=True, is_main=True)
     print("product_main")
@@ -101,7 +102,7 @@ class JsonFilterBrendsView(ListView):
         if sort_by == 0:
             sort = "product__name"
         elif sort_by == 1:
-            sort = "" 
+            sort = "-product__buyers_choice" 
         elif sort_by == 2:
             sort = "-product__middlestar" 
         elif sort_by == 3:
@@ -172,7 +173,7 @@ class QuickView(DetailView):
     def quick_view(self):
         product = Product.objects.get( id=self.kwargs["id"])
         queryset = ProductImage.objects.filter(is_main=True, product=product)\
-            .values("product__id", "product__name", "product__short_description", "product__price", "product__rest", "product__url", "image")
+            .values("product__id", "product__name", "product__middlestar", "product__countStar", "product__category__name", "product__manufacturer__name", "product__short_description", "product__price", "product__rest", "product__url", "image")
         
         return queryset
 
@@ -229,18 +230,26 @@ def product_detail(request, id, slug):
     product= get_object_or_404(Product, id=id, url=slug)
     products = Product.objects.filter(parent=id)
     products_images = ProductImage.objects.filter(product__in = products, is_active=True, is_main=True)
+    product_detail = get_object_or_404(ProductDetail, product = product) #.values("description", "weight", "height", "length", "width", "formats", "characteristics")
+    product_detail_names = [f.verbose_name for f in ProductDetail._meta.get_fields()]
+    #product_detail_names = ProductDetail._meta.get_fields()
+
     categories= Category.objects.all()
 
     session_key = request.session.session_key
     if not session_key:
         request.session.cycle_key()
-
-
-    print(request.session.session_key)
+   
+    
+    #print(product_detail_names)
+    #print(atgetters)
+    #print(product_detail[0])
+    #print(request.session.session_key)
 
     return render(request, "catalog/product/detail.html", {"product":product,
                                                     "categories":categories,
                                                     "products":products_images,
+                                                    "productdetail":product_detail,
                                                     "star_form":ReviewForm(),})
 
 class ParentProducts(ListView):

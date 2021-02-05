@@ -11,13 +11,24 @@ class LoginForm(forms.Form):
     
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password',
-                               widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password',
-                                widget=forms.PasswordInput)
+    password = forms.CharField(label='',
+                               widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Введите пароль"}))
+    password2 = forms.CharField(label='',
+                                widget=forms.PasswordInput(attrs={"class": "form-control", "placeholder": "Повторите пароль"}))
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'email')
+        fields = ('username', 'first_name') #, 'email')
+        widgets = {
+            "username": forms.TextInput(attrs={"class": "form-control", "placeholder": "Введите ваш E-mail"}),
+            "first_name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Введите ваше Имя"}),
+            #"email": forms.TextInput(attrs={"class": "form-control", "placeholder": "Введите ваш E-mail"})
+
+        }
+        labels = {
+            "username": '',
+            "first_name": '',
+            #"email": ''
+        }
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:

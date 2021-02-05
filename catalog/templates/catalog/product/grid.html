@@ -165,30 +165,30 @@
                                     </div>
                                     <div class="price-row row d-flex justify-content-between ">
                                         <div>
-                                        <h5 class="product-price"><b>{{ product.price }} ₽</b></h5>
+                                        <h6 class="product-price"><b>{{ product.price }} ₽</b></h6>
                                         </div>
                                         <div class="product_rating">
-                                            {% if product.middlestar|add:'0' >= 1 %}
+                                            {% if product.middlestar >= 1 %}
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             {% else %}
                                                 <i class="far fa-star" aria-hidden="true"></i>
                                             {% endif %}
-                                            {% if product.middlestar|add:'0' >= 2 %}
+                                            {% if product.middlestar >= 2 %}
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             {% else %}
                                                 <i class="far fa-star" aria-hidden="true"></i>
                                             {% endif %}
-                                            {% if product.middlestar|add:'0' >= 3 %}
+                                            {% if product.middlestar >= 3 %}
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             {% else %}
                                                 <i class="far fa-star" aria-hidden="true"></i>
                                             {% endif %}
-                                            {% if product.middlestar|add:'0' >= 4 %}
+                                            {% if product.middlestar >= 4 %}
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             {% else %}
                                                 <i class="far fa-star" aria-hidden="true"></i>
                                             {% endif %}
-                                            {% if product.middlestar|add:'0' >= 5 %}
+                                            {% if product.middlestar >= 5 %}
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             {% else %}
                                                 <i class="far fa-star" aria-hidden="true"></i>

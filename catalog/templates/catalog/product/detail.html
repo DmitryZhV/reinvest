@@ -10,59 +10,8 @@
                 <div class="modal-body">
                     <div class="quickview_body">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-lg-5">
-                                    <div class="quickview_pro_img">
-                                        <img class="first_img" src="img/product-img/new-1-back.png" alt="">
-                                        <img class="hover_img" src="img/product-img/new-1.png" alt="">
-                                        <!-- Product Badge -->
-                                        <div class="product_badge">
-                                            <span class="badge-new">New</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-7">
-                                    <div class="quickview_pro_des">
-                                        <h4 class="title">Boutique Silk Dress</h4>
-                                        <div class="top_seller_product_rating mb-15">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </div>
-                                        <h5 class="price">{{ product.price }} <span>$130</span></h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
-                                        <a href="#">View Full Product Details</a>
-                                    </div>
-                                    <!-- Add to Cart Form -->
-                                    <form class="cart" method="post">
-                                        <div class="quantity">
-                                            <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
-                                        </div>
-                                        <button type="submit" name="addtocart" value="5" class="cart-submit">Add to cart</button>
-                                        <!-- Wishlist -->
-                                        <div class="modal_pro_wishlist">
-                                            <a href="wishlist.html"><i class="icofont-heart"></i></a>
-                                        </div>
-                                        <!-- Compare -->
-                                        <div class="modal_pro_compare">
-                                            <a href="compare.html"><i class="icofont-exchange"></i></a>
-                                        </div>
-                                    </form>
-                                    <!-- Share -->
-                                    <div class="share_wf mt-30">
-                                        <p>Share with friends</p>
-                                        <div class="_icon">
-                                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="row row_quickview">
+                                
                             </div>
                         </div>
                     </div>
@@ -114,7 +63,7 @@
     <!-- Single Product Details Area -->
     <section class="single_product_details_area section_padding_100">
         <div class="container">
-            <div class="row">
+            <div class="row row-eq-height mb-5">
                 <div class="col-12 col-lg-6">
                     <div class="single_product_thumb">
                         <div id="product_details_slider" class="carousel slide" data-ride="carousel">
@@ -125,8 +74,11 @@
 
                            		{% for image_item in product.productimage_set.all %}
 
-
-                                <div class="carousel-item active">
+                                {%if image_item.is_main is True %}
+                                    <div class="carousel-item active">
+                                {% else %}
+                                    <div class="carousel-item">
+                                {% endif %}
                                     <a class="gallery_img" href="{{ image_item.image.url }}" title="First Slide {{ forloop.counter }}">
                                         <img class="d-block w-100" src="{{ image_item.image.url }}" alt="Первый слайд {{ forloop.counter }}">
                                     </a>
@@ -156,96 +108,66 @@
                 <div class="col-12 col-lg-6">
                     <div class="single_product_desc">
                         <h4 class="title mb-2">{{ product.name }}</h4>
-                        <p>{{ product.category.name }}</p>
-                        <p>{{ product.manufacturer.name }}</p>
+                        <p class="title-detail">{{ product.category.name }}</p>
+                        <p class="title-detail">{{ product.manufacturer.name }}</p>
                         <div class="single_product_ratings mb-2">
-                            {% if product.middlestar|add:'0' >= 1 %}
+                            {% if product.middlestar >= 1 %}
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             {% else %}
                                 <i class="far fa-star" aria-hidden="true"></i>
                             {% endif %}
-                            {% if product.middlestar|add:'0' >= 2 %}
+                            {% if product.middlestar >= 2 %}
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             {% else %}
                                 <i class="far fa-star" aria-hidden="true"></i>
                             {% endif %}
-                            {% if product.middlestar|add:'0' >= 3 %}
+                            {% if product.middlestar >= 3 %}
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             {% else %}
                                 <i class="far fa-star" aria-hidden="true"></i>
                             {% endif %}
-                            {% if product.middlestar|add:'0' >= 4 %}
+                            {% if product.middlestar >= 4 %}
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             {% else %}
                                 <i class="far fa-star" aria-hidden="true"></i>
                             {% endif %}
-                            {% if product.middlestar|add:'0' >= 5 %}
+                            {% if product.middlestar >= 5 %}
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             {% else %}
                                 <i class="far fa-star" aria-hidden="true"></i>
                             {% endif %}
                             
-                            <span>{{product.countStar}}</span> 
-                            
+                            <span class="title-detail"> ({{product.countStar}}) /</span> 
+                            <a href="#reviews" id="reviews-tab" class="title-detail" > Оставить отзыв </a>
                         </div>
                         <h4 class="price mb-4">{{ product.price }} ₽<span></span></h4>
 
                         <!-- Overview -->
-                        <div class="short_overview mb-4">
+                        <div class="short_overview mb-2">
                             <h6>О товаре:</h6>
-                            <p></p>
                             <p>{{ product.short_description }}</p>
                         </div>
-
-                        <!-- Color Option -->
-                        <div class="widget p-0 color mb-3">
-                            <h6 class="widget-title">Color</h6>
-                            <div class="widget-desc d-flex">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label black" for="customRadio1"></label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label pink" for="customRadio2"></label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label red" for="customRadio3"></label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label purple" for="customRadio4"></label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
-                                    <label class="custom-control-label white" for="customRadio5"></label>
-                                </div>
-                            </div>
+                        <div class="short_overview mb-2">
+                            <a href="#description" id="description-tab" ><u>Перейти к подробному описанию</u> </a>
                         </div>
-
-                        <!-- Size Option -->
-                        <div class="widget p-0 size mb-3">
-                            <h6 class="widget-title">Size</h6>
-                            <div class="widget-desc">
-                                <ul>
-                                    <li><a href="#">XS</a></li>
-                                    <li><a href="#">S</a></li>
-                                    <li><a href="#">M</a></li>
-                                    <li><a href="#">L</a></li>
-                                    <li><a href="#">XL</a></li>
-                                </ul>
-                            </div>
+                        <div class="short_overview mb-2">
+                            <h6>Краткие характеристики:</h6>
+                            <p>Вес (кг): {{ productdetail.weight }}</p>
+                            <p>Габариты (ШхВхГ): {{ productdetail.width }}х{{ productdetail.height }}х{{ productdetail.length }}</p>
+                            <p>{{ productdetail.formats }}</p>
                         </div>
-
+                        <div class="short_overview mb-2">
+                            <a href="#addi-info" id="characteristics-tab" ><u>Перейти ко всем характиристикам</u> </a>
+                        </div>
+                        
                         <!-- Add to Cart Form method="post" -->
                         {% if product.rest %}
-                                 <form class="cart clearfix my-5 d-flex flex-wrap align-items-center" id="form_bay_prod_datail" action="/basket_adding/">{% csrf_token %}
+                                 <form class="cart clearfix my-3 d-flex flex-wrap align-items-center" id="form_bay_prod_datail" action="/basket_adding/">{% csrf_token %}
                                     <div class="quantity">
                                         <input type="number" class="qty-text form-control" id="qty2" step="1" min="1" max="{{product.rest}}" name="quantity" value="1">
                                     </div>
                                     <button type="submit" name="addtocart" value="5" id="btn_submit"
-                                    class="btn btn-danger mt-1 mt-md-0 ml-1 ml-md-3"
+                                    class="btn btn-rein mt-1 mt-md-0 ml-1 ml-md-3"
                                     data-toggle="modal" data-target="#basicExampleModal"
                                     data-product_id= "{{product.id}}"
                                     data-product_name= "{{product.name}}"
@@ -256,8 +178,8 @@
                                     Добавить в корзину</button>
                                 </form>
                         {% else %}
-                                <div class="my-5 danger">
-                                    <strong>Под заказ</strong>
+                                <div class="my-3" style="color: #cf0000">
+                                    <button class="btn btn-rein mt-1 mt-md-0 ml-1 ml-md-3"> <strong>Под заказ</strong></button>
                                 </div>
                                 
                         {% endif %}
@@ -283,26 +205,20 @@
                         <!-- Tabs -->
                         <ul class="nav nav-tabs" role="tablist" id="product-details-tab">
                             <li class="nav-item">
-                                <a href="#description" class="nav-link active" data-toggle="tab" role="tab"> Описание</a>
+                                <a href="#description" id="tab-description" class="nav-link active" data-toggle="tab" role="tab"> Описание</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab"> Отзывы <span class="text-muted">({{ product.reviews_set.count }})</span></a>
+                                <a href="#reviews" id="tab-reviews" class="nav-link" data-toggle="tab" role="tab"> Отзывы <span class="text-muted">({{ product.reviews_set.count }})</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional Information</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#refund" class="nav-link" data-toggle="tab" role="tab">Return &amp; Cancellation</a>
+                                <a href="#addi-info" id="tab-characteristics" class="nav-link" data-toggle="tab" role="tab"> Характиристики </a>
                             </li>
                         </ul>
                         <!-- Tab Content -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="description">
                                 <div class="description_area">
-                                   
-                                    
-
-                                    <p class="mb-0">{{ product.description|safe }}</p>
+                                   <p class="mb-0">{{ productdetail.description|safe }}</p>
                                 </div>
                             </div>
 
@@ -376,9 +292,9 @@
                                             </div>-->
                                             <div class="form-group">
                                                 <label for="comments">Комментарий</label>
-                                                <textarea class="form-control" id="comments" rows="5" data-max-length="150" name="text">Здесь можно написать отзыв</textarea>
+                                                <textarea class="form-control" id="comments" rows="5" data-max-length="150" name="text" placeholder="Здесь можно написать отзыв"></textarea>
                                             </div>
-                                            <button type="submit" class="btn btn-danger">Отправить</button>
+                                            <button type="submit" class="btn btn-rein">Отправить</button>
                                         </form>
                                     </div>
                                 </div>
@@ -387,44 +303,14 @@
 
                             <div role="tabpanel" class="tab-pane fade" id="addi-info">
                                 <div class="additional_info_area">
-                                    <h5>Additional Info</h5>
-                                    <p>What should I do if I receive a damaged parcel?
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit impedit similique qui, itaque delectus labore.</span></p>
-                                    <p>I have received my order but the wrong item was delivered to me.
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quam voluptatum beatae harum tempore, ab?</span></p>
-                                    <p>Product Receipt and Acceptance Confirmation Process
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ducimus, temporibus soluta impedit minus rerum?</span></p>
-                                    <p class="mb-0">How do I cancel my order?
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius eum, minima!</span></p>
+                                    <h5>Характиристики</h5>
+                                    <div class="description_area">
+                                        <p class="mb-0">{{ productdetail.characteristics|safe }}</p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div role="tabpanel" class="tab-pane fade" id="refund">
-                                <div class="refund_area">
-                                    <h6>Return Policy</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa quidem, eos eius laboriosam voluptates totam mollitia repellat rem voluptate obcaecati quas fuga similique impedit cupiditate vitae repudiandae. Rem, tenetur placeat!</p>
-
-                                    <h6>Return Criteria</h6>
-                                    <ul class="mb-30 ml-30">
-                                        <li><i class="icofont-check"></i> Package broken</li>
-                                        <li><i class="icofont-check"></i> Physical damage in the product</li>
-                                        <li><i class="icofont-check"></i> Software/hardware problem</li>
-                                        <li><i class="icofont-check"></i> Accessories missing or damaged etc.</li>
-                                    </ul>
-
-                                    <h6>Q. What should I do if I receive a damaged parcel?</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit impedit similique qui, itaque delectus labore.</p>
-
-                                    <h6>Q. I have received my order but the wrong item was delivered to me.</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quam voluptatum beatae harum tempore, ab?</p>
-
-                                    <h6>Q. Product Receipt and Acceptance Confirmation Process</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ducimus, temporibus soluta impedit minus rerum?</p>
-
-                                    <h6>Q. How do I cancel my order?</h6>
-                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius eum, minima!</p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -438,7 +324,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section_heading new_arrivals">
+                    <div class="section_heading">
                         <h5>С этим товаром покупают</h5>
                     </div>
                 </div>
@@ -481,7 +367,8 @@
 
                                 <!-- Quick View -->
                                 <div class="product_quick_view">
-                                    <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i> Quick View</a>
+                                    <a href="#" class="product_quickview"  data-product_id="{{product_item.product.id}}" data-toggle="modal" data-target="#quickview">
+                                    <i class="fas fa-eye"></i><b> Просмотр</b></a>
                                 </div>
 
                                 <!--<p class="brand_name">Top</p>-->
@@ -489,27 +376,27 @@
                                 <div class="row d-flex justify-content-around align-items-center">
                                     <h5 class="product-price"><b>{{ product_item.product.price }} ₽</b></h5>
                                     <div class="product_rating">
-                                        {% if product_item.product.middlestar|add:'0' >= 1 %}
+                                        {% if product_item.product.middlestar >= 1 %}
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         {% else %}
                                             <i class="far fa-star" aria-hidden="true"></i>
                                         {% endif %}
-                                        {% if product_item.product.middlestar|add:'0' >= 2 %}
+                                        {% if product_item.product.middlestar >= 2 %}
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         {% else %}
                                             <i class="far fa-star" aria-hidden="true"></i>
                                         {% endif %}
-                                        {% if product_item.product.middlestar|add:'0' >= 3 %}
+                                        {% if product_item.product.middlestar >= 3 %}
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         {% else %}
                                             <i class="far fa-star" aria-hidden="true"></i>
                                         {% endif %}
-                                        {% if product_item.product.middlestar|add:'0' >= 4 %}
+                                        {% if product_item.product.middlestar >= 4 %}
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         {% else %}
                                             <i class="far fa-star" aria-hidden="true"></i>
                                         {% endif %}
-                                        {% if product_item.product.middlestar|add:'0' >= 5 %}
+                                        {% if product_item.product.middlestar >= 5 %}
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                         {% else %}
                                             <i class="far fa-star" aria-hidden="true"></i>

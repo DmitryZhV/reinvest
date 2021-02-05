@@ -44,11 +44,13 @@
                                 {% for product_in_basket in products_in_basket %}
                                   <tr>
                                       <th scope="row">
-                                          <i class="fas fa-times"></i>
+                                          <span class="product-in-basket-remove" data-product_id="{{product_in_basket.id}}"><i class="fas fa-times"></i></span>
                                       </th>
                                       <td>
                                           {% for product_image in product_in_basket.product.productimage_set.all %}
-                                          <img src="{{ product_image.image.url }}" alt="Product">
+                                                {% if product_image.is_main is True %}
+                                                    <img src="{{ product_image.image.url }}" alt="Product">
+                                                {% endif %}
                                           {% endfor %}
                                       </td>
                                       <td>
@@ -60,10 +62,13 @@
                                       </td>
                                       <td>
                                           <div class="def-number-input number-input safari_only">
-
-                                              <input type="number" class="quantity"  step="1" min="0" max="99"
-                                              value="{{ product_in_basket.num }}" name="product_{{product_in_basket.id}}">
-
+                                              <button class="qty-minus" type="button" >
+                                              <i class="fas fa-caret-down"></i></button>
+                                              <input type="number" class="qty-text"  step="1" min="1" max="{{ product_in_basket.product.rest }}"
+                                              value="{{ product_in_basket.num }}" data-product_id="{{ product_in_basket.product.id }}" name="product_{{product_in_basket.id}}" required>
+                                              <button class="qty-plus" type="button" >
+                                              <i class="fas fa-caret-up"></i></button>
+                                              
                                           </div>
                                       </td>
                                       <td>
@@ -83,13 +88,13 @@
 				
               <div class="col-12 col-lg-6">
                   <div class="cart-apply-coupon mb-30">
-                      <h6>У вас есть купон?</h6>
-                      <p>Введите код вашего купона и получите скидку!</p>
+                      <h6>Есть промокод?</h6>
+                      <!--<p>Введите Ваш промокод для получения скидки!</p> -->
                       <!-- Form -->
                       <div class="coupon-form">
                           <form action="#">
-                              <input type="text" class="form-control" placeholder="Введите код купона">
-                              <button type="submit" class="btn btn-danger">Применить купон</button>
+                              <input type="text" class="form-control" placeholder="Введите Ваш промокод для получения скидки!">
+                              <button type="submit" class="btn btn-rein">Применить</button>
                           </form>
                       </div>
                       <div class="form-group">
@@ -114,30 +119,19 @@
 
               <div class="col-12 col-lg-5">
                   <div class="cart-total-area mb-30">
-                      <h5 class="mb-3">Cart Totals</h5>
+                      <h5 class="mb-3">Итого</h5>
                       <div class="table-responsive">
                           <table class="table mb-3">
                               <tbody>
                                   <tr>
-                                      <td>Подитог</td>
+                                      <td>Товаров на сумму</td>
                                       <td><span id="total_order_amount">XXX</span> ₽</td>
                                   </tr>
-                                  <tr>
-                                      <td>Доставка</td>
-                                      <td>1000 ₽</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Налоги (20%)</td>
-                                      <td>1000 ₽</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Сумма заказа</td>
-                                      <td>1000 ₽</td>
-                                  </tr>
+                                  
                               </tbody>
                           </table>
                       </div>
-                      <button type="submit" class="btn btn-danger d-block">Оформить заказ</button>
+                      <button type="submit" class="btn btn-rein d-block">Оформить заказ</button>
                   </div>
               </div>
                </div>

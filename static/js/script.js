@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	var formBasket = $('#form_bay_prod_datail');
+	
 	var formFilter = $('#filter');
 	var sortBy= $('#sort_by');
 	var reviewStar = $('.review-rating');
@@ -20,10 +21,61 @@ $(document).ready(function(){
 	var page=1;
 	var buttonGridList=1;
 	var sortVal=0;
+	var winScroll = 950;
 	$('.category').hide();
 
+	function removeClassTab(idTab, idLink){
+		$('#description').removeClass('show active');
+		$('#reviews').removeClass('show active');
+		$('#addi-info').removeClass('show active');
+		idTab.addClass('show active');
+		$('#tab-description').removeClass('active');
+		$('#tab-reviews').removeClass('active');
+		$('#tab-characteristics').removeClass('active');
+		idLink.addClass('active');
+		idTab.tab('show');
+		window.scrollTo(0, winScroll);
+	}
 
-	function basketUpdate(product_id, qty, is_delete){
+	$('#reviews-tab').click(function(e){
+		e.preventDefault();
+		const idTab = $('#reviews');
+		const idLink = $('#tab-reviews');
+		removeClassTab(idTab, idLink);
+		
+		
+	  });
+	  $('#description-tab').click(function(e){
+		e.preventDefault();
+		const idTab = $('#description');
+		const idLink = $('#tab-description');
+		removeClassTab(idTab, idLink);
+		
+	  });
+	  $('#characteristics-tab').click(function(e){
+		e.preventDefault();
+		const idTab = $('#addi-info');
+		const idLink = $('#tab-characteristics');
+		removeClassTab(idTab, idLink);
+		
+	  });
+
+	function calculateCartAmount(){
+		var total_order_amount = 0;
+		$('.product-total-amount-in-cart').each(function(){
+			//total_order_amount += parseInt($(this).text());
+			var numProduct = parseInt($(this).find('.product-num').text());
+			var price = parseInt($(this).find('.price').text());
+			total_order_amount+=price*numProduct;
+			//console.log(price*numProduct)
+			
+			
+		});
+		//console.log(total_order_amount);
+		$('#cart_total_amount').text(total_order_amount+" ₽");
+	};
+
+	function basketUpdate(product_id, qty, is_delete, is_update=true){
 		var data = {};
 		data.product_id=product_id;
 		data.nmb = qty;
@@ -33,7 +85,10 @@ $(document).ready(function(){
 		if (is_delete){
 			data["is_delete"] = true;
 			}
-
+		if (is_update){
+			data["is_update"] = true;
+			}
+		console.log(data);
 		var url="/basket_adding/"
 		
 		$.ajax({
@@ -63,7 +118,7 @@ $(document).ready(function(){
                         </li>');
 					cart_total_amount +=parseInt(v.nmb)*parseInt(v.price_per_item);
 				})
-				$('#cart_total_amount').text(cart_total_amount);
+				$('#cart_total_amount').text(cart_total_amount+" ₽");
 			  }
 			},
 			error: function(){
@@ -73,8 +128,7 @@ $(document).ready(function(){
 	}
 
 
-
-	formBasket.on('submit', function(e){
+	$(document).on('submit', '#form_bay_prod_datail', function(e){
 		e.preventDefault();
 
 		var qty= $('#qty2').val();
@@ -116,6 +170,7 @@ $(document).ready(function(){
 		basketUpdate(product_id, qty, is_delete=true)
 
 	});
+
   //update total amount in cart.html
 	function calculateBasketAmount(){
 		var total_order_amount = 0;
@@ -128,16 +183,63 @@ $(document).ready(function(){
 		$('#total_order_amount').text(total_order_amount);
 	};
 
-	$(document).on('change', ".quantity", function(){
+	$('.def-number-input').on('change', ".qty-text", function(){
 		var current_num = $(this).val();
+		var max_num = this.getAttribute("max")
 		var current_tr = $(this).closest('tr');
 		var current_price = parseInt(current_tr.find('.product-in-basket-price').text());
 		var total_amount = current_num*current_price;
+		console.log(max_num);
  		current_tr.find('.product-total-amount-in-basket').text(total_amount);
  		calculateBasketAmount();
 	})
 
+	$('.def-number-input').on('click', ".qty-minus", function(){
+		this.nextElementSibling.stepDown();
+		var current_num = $(this.nextElementSibling).val();
+		var current_tr = $(this).closest('tr');
+		var current_price = parseInt(current_tr.find('.product-in-basket-price').text());
+		var total_amount = current_num*current_price;
+		var product_id = $(this.nextElementSibling).data("product_id");
+		current_tr.find('.product-total-amount-in-basket').text(total_amount);
+		calculateBasketAmount();
+		basketUpdate(product_id, current_num, is_delete=false, is_update=false)
+
+		
+	});
+	$('.def-number-input').on('click', ".qty-plus", function(){
+		
+		
+		this.previousElementSibling.stepUp();
+		var current_num = $(this.previousElementSibling).val();
+		var current_tr = $(this).closest('tr');
+		var current_price = parseInt(current_tr.find('.product-in-basket-price').text());
+		var total_amount = current_num*current_price;
+		var product_id = $(this.previousElementSibling).data("product_id");
+		current_tr.find('.product-total-amount-in-basket').text(total_amount);
+		calculateBasketAmount();
+		basketUpdate(product_id, current_num, is_delete=false, is_update=false)
+	});
+
+
+	$(document).on('click', '.product-in-basket-remove', function(e){
+		e.preventDefault();
+		product_id = $(this).data("product_id");
+		sp=this;
+		ell = sp.closest("tr");
+		ell.parentElement.removeChild(ell); 
+		
+		qty = 0;
+		//var url=form.attr("action");
+		//var csrf_token = $('#csrf_hiden_code [name="csrfmiddlewaretoken"]').val();
+		basketUpdate(product_id, qty, is_delete=true)
+		calculateBasketAmount();
+
+	});
+
 	calculateBasketAmount();
+	calculateCartAmount();
+	
 	//Ajax фильтр по товару
 	function getFilter(){
 		var price = $('.slider-range-price')
@@ -185,7 +287,7 @@ $(document).ready(function(){
 												<img class="normal_img" src="/media/'+v.image+'" alt="">\
 												<img class="hover_img" src="" alt="">\
 												\
-											</a>'+(v.product__buyers_choice ? '<div class="product_badge"><span>TOP</span></div>':'')+'\
+											</a>'+(v.product__buyers_choice > 0 ? '<div class="product_badge"><span>TOP</span></div>':'')+'\
 												\
 												<!-- Wishlist -->\
 												<div class="product_wishlist">\
@@ -200,21 +302,23 @@ $(document).ready(function(){
 										<div class="product_description">\
 												<!-- Add to cart -->\
 												<div class="product_add_to_cart">\
-														<a href="#" class="btnCart" id="add_cart'+v.product__id+'" data-product_id= "'+v.product__id+'">\
-														<i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>\
+												'+(v.product__rest > 0 ? '<a href="#" class="btnCart" data-product_name="'+v.product__name+'" data-product_id= "'+v.product__id+'">\
+																			<i class="fa fa-shopping-cart"></i><b> В корзину</b> </a>\
+												':'<a href="#" class="btnCart" data-product_name="'+v.product__name+'" data-product_id= "'+v.product__id+'">\
+												 <b>Под заказ</b></a>')+'\
 												</div>\
 												<!-- Quick View  product_quick_view -->\
 												<div class="product_quick_view">\
-														<a href="#" class="product_quickview" data-product_id="{{product.id}}" data-toggle="modal" data-target="#quickview">\
+														<a href="#" class="product_quickview" data-product_id="'+v.product__id+'" data-toggle="modal" data-target="#quickview">\
 														<i class="fas fa-eye"></i><b> Просмотр</b></a>\
 												</div>\
 												<p>'+v.product__category__name+'</p>\
 												<p>'+v.product__manufacturer__name+'</p>\
 												<a href="/'+v.product__id+'/'+v.product__url+'"><i class="fa fa-arrows-h" ></i>'+v.product__name+'</a>\
-												<div class="row d-flex justify-content-around align-items-center">\
-												<h5 class="product-price"><b>'+v.product__price+' ₽</b></h5>\
+												\
+												<h6 class="product-price"><b>'+v.product__price+' ₽</b></h6>\
 												<div class="product_rating" id="star'+v.product__id+'">\
-												</div>\
+												\
 											</div>\
 										</div>\
 								</div>\
@@ -242,32 +346,42 @@ $(document).ready(function(){
 										  <a href="/'+v.product__id+'/'+v.product__url+'">  \
 											<!-- Product Image -->\
 	                                        <img class="normal_img" src="/media/'+v.image+'" alt="">\
-											<img class="hover_img" src="img/product-img/best-5.png" alt="">\
-										  </a>\
-	                                        <div class="product_badge">\
-	                                            <span>New</span>\
-	                                        </div>\
+											<img class="hover_img" src="" alt="">\
+										  </a>'+(v.product__buyers_choice > 0 ? '<div class="product_badge"><span>TOP</span></div>':'')+'\
 	                                        <div class="product_wishlist">\
-	                                            <a href="wishlist.html"><i class="icofont-heart"></i></a>\
+	                                            <a href="wishlist.html"><i class="fa fa-heart"></i></a>\
 	                                        </div>\
 	                                        <div class="product_compare">\
-	                                            <a href="compare.html"><i class="icofont-exchange"></i></a>\
+	                                            <a href="compare.html"><i class="fa fa-exchange-alt"></i></a>\
 	                                        </div>\
 	                                    </div>\
 	                                    <div class="product_description">\
 	                                        <div class="product_add_to_cart">\
-	                                            <a href="#" class="btnCart" id="add_cart'+v.product__id+'" data-product_id= "'+v.product__id+'"><i class="fa fa-shopping-cart"></i>  в Корзину</a>\
+												<a href="#" class="btnCart" data-product_name="'+v.product__name+'" data-product_id= "'+v.product__id+'">\
+												<i class="fa fa-shopping-cart"></i> <b> В корзину </b></a>\
 	                                        </div>\
 	                                        <div class="product_quick_view">\
-	                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i>Просмотр</a>\
-	                                        </div>\
-	                                        <p class="brand_name">Top</p>\
-	                                        <a href="/'+v.product__id+'/'+v.product__url+'">'+v.product__name+'</a>\
-	                                        <h5 class="product-price"><b>Цена: '+v.product__price+' ₽</b></h5>\
+												<a href="#" class="product_quickview" data-product_id="'+v.product__id+'" data-toggle="modal" data-target="#quickview">\
+												<i class="fas fa-eye"></i>Просмотр</a>\
+											</div>\
+											<a href="/'+v.product__id+'/'+v.product__url+'">'+v.product__name+'</a>\
+											<div class="product_rating" id="star'+v.product__id+'"></div>\
+	                                        <p>'+v.product__category__name+'</p>\
+											<p>'+v.product__manufacturer__name+'</p>\
+	                                        \
+	                                        <h6 class="product-price"><b>Цена: '+v.product__price+' ₽</b></h6>\
 	                                        <p class="product-short-desc"> '+v.product__short_description+'</p>\
 	                                    </div>\
 	                                </div>\
-	                             </div>');
+								 </div>');
+								 id=v.product__id;
+								rating=v.product__middlestar;
+								(rating >= 1) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+								(rating >= 2) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+								(rating >= 3) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+								(rating >= 4) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+								(rating >= 5) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+								$('#star'+id).append('<span> '+v.product__countStar+'</span> ');
 						});	
 					};
 					$('.shop_pagination_area').append('\
@@ -345,7 +459,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('.btnCategory').click(function(e){
+	$('.btnCategory').on('click', function(e){
 		e.preventDefault();
 		var get_id = this.id;
 		var get_current = $('.categoris .'+get_id);
@@ -364,8 +478,9 @@ $(document).ready(function(){
 		
 	});
 	
-	$('.btnCart').click(function(e){
+	$(document).on('click', '.btnCart', function(e){
 		e.preventDefault();
+		console.log('cart');
 		var product_name = $(this).data("product_name");
 		var product_id = $(this).data("product_id");
 		var qty= 1;
@@ -373,6 +488,9 @@ $(document).ready(function(){
 		$('#exampleModalLabel').append(product_name+' добавлен в корзину.');
 		var url = 'parent';
 		$.get("../"+url+"/"+product_id+"/", function(data){
+			$('.cart_slides').removeClass('owl-loaded');
+			$('.cart_slides').removeClass('owl-hidden');
+			$('.cart_slides').removeClass('owl-drag');
 			$('.cart_slides').html("");
 			$('#exampleModalHiader').html("");
 			if(data.products.length)
@@ -396,13 +514,15 @@ $(document).ready(function(){
 						</div>\
 			 		</div>'
 				);
+
 			});
+			
 			$('.cart_slides').owlCarousel({
 				items: 3,
 				margin: 20,
 				loop: true,
 				nav: true,
-	
+				autoHeight: true,
 				navText: ['<i class="fa fa-arrow-circle-left"></i>', '<i class="fa fa-arrow-circle-right"></i>'],
 				dots: false,
 				autoplay: true,
@@ -425,19 +545,32 @@ $(document).ready(function(){
 				}
 			});
 			
+			
 		});
 		$("#basicExampleModal").modal();
 		
 
 		basketUpdate(product_id, qty, is_delete=false);
 		
+		setTimeout(function() {
+			console.log("5 sec");
+			$('.cart_slides').addClass('owl-loaded');
+			$('.cart_slides').addClass('owl-drag');
+			$(".cart_slides").trigger('refresh.owl.carousel');
+			//$(window).resize(function(){ $('.cart_slides').trigger('refresh.owl.carousel'); });
+			//$(".owl-carousel").removeClass('owl-loaded');
+			//var owl = $('.owl-carousel').data('owl.carousel');
+			//owl.onResize();
+		  }, 50)
+		 
 	});
 
-	$('.product_quickview').click(function(e){
+	$(document).on('click','.product_quickview', function(e){
 		e.preventDefault();
 		var product_id = $(this).data("product_id");
 		var url = 'quickview';
-		$.get("../"+url+"/"+product_id+"/", function(data){
+		console.log("../"+url+"/"+product_id+"/");
+		$.get("../../"+url+"/"+product_id+"/", function(data){
 			
 			$('.row_quickview').html("");
 			$.each(data.product, function(k, v){
@@ -455,36 +588,32 @@ $(document).ready(function(){
 				<div class="col-12 col-lg-7">\
 					<div class="quickview_pro_des">\
 						<h4 class="title">'+v.product__name+'</h4>\
-						<div class="top_seller_product_rating mb-15">\
-							<i class="fa fa-star" aria-hidden="true"></i>\
-							<i class="fa fa-star" aria-hidden="true"></i>\
-							<i class="fa fa-star" aria-hidden="true"></i>\
-							<i class="fa fa-star" aria-hidden="true"></i>\
-							<i class="fa fa-star" aria-hidden="true"></i>\
-						</div>\
+						<div class="top_seller_product_rating" id="star'+v.product__id+'"></div>\
+						<p>'+v.product__category__name+'</p>\
+						<p>'+v.product__manufacturer__name+'</p>\
 						<h5 class="price"><b>Цена: '+v.product__price+' ₽</b></h5>\
 						<p>'+v.product__short_description+'</p>\
 						<a href="/'+v.product__id+'/'+v.product__url+'">Посмотреть полное описание</a>\
 					</div>\
 					<!-- Add to Cart Form -->\
 					<form class="cart"  id="form_bay_prod_datail" action="/basket_adding/">\
-						<div class="quantity">\
-							<input type="number" class="qty-text form-control" id="qty2" step="1" min="1" max="'+v.product__rest+'" name="quantity" value="1">\
+						<div class="qty-text">\
+							<input type="number" class="qty-text form-control" id="qty2" step="1" min="1" max="'+v.product__rest+'" name="qty-text" value="1">\
 						</div>\
 						<button type="submit" name="addtocart" value="5" id="btn_submit"\
-						 class="btn btn-danger mt-1 mt-md-0 ml-1 ml-md-3"\
+						 class="btn cart-submit mt-1 mt-md-0 ml-1 ml-md-3"\
 						 data-product_id= "'+v.product__id+'"\
 						 data-product_name= "'+v.product__name+'"\
 						 data-product_price= "'+v.product__price+'"\
 						 data-product_url="/media/'+v.image+'">\
-						 Добавить в корзину</button>\
-						<!-- Wishlist -->\
-						<div class="modal_pro_wishlist">\
-							<a href="wishlist.html"><i class="icofont-heart"></i></a>\
-						</div>\
+						 <i class="fa fa-shopping-cart"></i> <b> в корзину </b></button>\
 						<!-- Compare -->\
 						<div class="modal_pro_compare">\
-							<a href="compare.html"><i class="icofont-exchange"></i></a>\
+							<a href="compare.html"><i class="fa fa-exchange-alt"></i><b> СРАВНИТЬ </b></a>\
+						</div>\
+						<!-- Wishlist -->\
+						<div class="modal_pro_wishlist">\
+							<a href="wishlist.html"><i class="fa fa-heart"></i></a>\
 						</div>\
 					</form>\
 					<!-- Share -->\
@@ -500,6 +629,15 @@ $(document).ready(function(){
 						</div>\
 					</div>\
 				</div>');
+				id=v.product__id;
+				rating=v.product__middlestar;
+				(rating >= 1) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+				(rating >= 2) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+				(rating >= 3) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+				(rating >= 4) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+				(rating >= 5) ?  $('#star'+id).append('<i class="fa fa-star" aria-hidden="true"></i>') : $('#star'+id).append('<i class="far fa-star" aria-hidden="true"></i>');
+				$('#star'+id).append('<span> '+v.product__countStar+'</span> ');
+				$('#qty2').val(1);
 			});
 		});
 		

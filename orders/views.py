@@ -21,7 +21,7 @@ def basket_adding(request):
     product_id=data.get("product_id")
     nmb=data.get("nmb")
     is_delete = data.get("is_delete")
-
+    is_update = data.get("is_update")
     if is_delete == 'true':
         ProductInBasket.objects.filter(id=product_id).update(is_active=False)
 
@@ -29,7 +29,10 @@ def basket_adding(request):
 
         new_product, created = ProductInBasket.objects.get_or_create(session_key=session_key, product_id=product_id, is_active=True, defaults={"num":nmb})
         if not created:
-            new_product.num+=int(nmb)
+            if  is_update == 'true':
+                new_product.num+=int(nmb)
+            else:
+                new_product.num=int(nmb)
             new_product.save(force_update=True)
 
     #common code for 2 cases
@@ -87,7 +90,8 @@ def cart(request):
 
             else:
                 print("error")
-        return render(request, 'orders/order/cart.html', locals())
+        return render(request, 'orders/order/cart.html', {'cart': products_in_basket,
+                                                                                        })
 
 @require_POST
 def cart_add(request, product_id):
